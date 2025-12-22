@@ -102,6 +102,9 @@ export const translations: Translation = {
   "auth.sso.email": { ja: "Continue with Email", en: "Continue with Email" },
   "auth.sso.toc": { ja: "By continuing, you agree to our Terms and Privacy Policy.", en: "By continuing, you agree to our Terms and Privacy Policy." },
   
+  "onboarding.plan.title": { ja: "Choose your plan", en: "Choose your plan" },
+  "onboarding.plan.subtitle": { ja: "Select the plan that best fits your needs.", en: "Select the plan that best fits your needs." },
+  
   "onboarding.workspace.title": { ja: "Name your workspace", en: "Name your workspace" },
   "onboarding.workspace.subtitle": { ja: "This will be your team's home base.", en: "This will be your team's home base." },
   "onboarding.workspace.label": { ja: "Workspace Name", en: "Workspace Name" },

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Bot, Settings, LogOut, ChevronRight, Zap, Menu, X, CreditCard, Sparkles } from 'lucide-react';
+import { LayoutDashboard, Bot, Settings, LogOut, ChevronRight, Zap, Menu, X, CreditCard, Sparkles, ArrowDownCircle } from 'lucide-react';
 import { Language } from '../../types';
 import { getTranslation } from '../../i18n';
 
@@ -15,6 +15,18 @@ export const AppShell: React.FC<AppShellProps> = ({ children, lang }) => {
   const t = (key: string) => getTranslation(key, lang);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [agentsExpanded, setAgentsExpanded] = useState(true);
+  
+  // Read plan from storage (set during onboarding)
+  const [currentPlan, setCurrentPlan] = useState('starter');
+  
+  useEffect(() => {
+     // Check storage on mount and whenever local storage changes (simulated via listening to custom event or just polling if needed, 
+     // but for this demo mount is usually enough. To make it reactive to the downgrade/upgrade actions, we can check on location change)
+     const storedPlan = localStorage.getItem('keido_plan');
+     if (storedPlan) {
+        setCurrentPlan(storedPlan);
+     }
+  }, [location.pathname]); // Re-check when location changes (e.g. coming back from billing page)
 
   // Helper to determine active state
   const isActive = (path: string) => {
@@ -88,21 +100,34 @@ export const AppShell: React.FC<AppShellProps> = ({ children, lang }) => {
           {/* Subscription Widget in Sidebar */}
           <div className="mb-4 bg-white rounded-xl border border-slate-200 p-3 shadow-sm">
              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Starter Plan</span>
-                <span className="text-[10px] font-bold text-brand-600 cursor-pointer hover:underline" onClick={() => navigate('/app/billing/upgrade')}>Manage</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{currentPlan === 'pro' ? 'Pro Plan' : 'Starter Plan'}</span>
+                <span className="text-[10px] font-bold text-brand-600 cursor-pointer hover:underline" onClick={() => navigate(currentPlan === 'pro' ? '/app/billing/downgrade' : '/app/billing/upgrade')}>Manage</span>
              </div>
              <div className="mb-2">
                 <div className="flex justify-between text-[10px] font-medium text-slate-700 mb-1">
                    <span>Runs</span>
-                   <span>850 / 1k</span>
+                   <span>{currentPlan === 'pro' ? 'Unlimited' : '850 / 1k'}</span>
                 </div>
                 <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                   <div className="h-full bg-brand-500 rounded-full w-[85%]"></div>
+                   <div className={`h-full bg-brand-500 rounded-full ${currentPlan === 'pro' ? 'w-[20%]' : 'w-[85%]'}`}></div>
                 </div>
              </div>
-             <button onClick={() => navigate('/app/billing/upgrade')} className="w-full bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-sm shadow-brand-500/20">
-                <Sparkles size={12} fill="currentColor" /> Upgrade to Pro
-             </button>
+             
+             {currentPlan === 'pro' ? (
+                <button 
+                  onClick={() => navigate('/app/billing/downgrade')} 
+                  className="w-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 text-xs font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                >
+                  Switch to Starter
+                </button>
+             ) : (
+                <button 
+                  onClick={() => navigate('/app/billing/upgrade')} 
+                  className="w-full bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-sm shadow-brand-500/20"
+                >
+                  <Sparkles size={12} fill="currentColor" /> Upgrade to Pro
+                </button>
+             )}
           </div>
           
           {/* User Profile */}

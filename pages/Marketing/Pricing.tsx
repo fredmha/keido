@@ -78,7 +78,7 @@ export const Pricing: React.FC<PricingProps> = ({ lang }) => {
               variant="secondary" 
               size="lg"
               className="mt-auto border-slate-200 bg-slate-50 text-slate-900 hover:bg-slate-100 transition-colors"
-              onClick={() => navigate('/auth/sso')}
+              onClick={() => navigate('/auth/sso?plan=starter')}
             >
               {t('pricing.free.cta')}
             </Button>
@@ -120,7 +120,7 @@ export const Pricing: React.FC<PricingProps> = ({ lang }) => {
               variant="gradient" 
               size="lg"
               className="mt-auto shadow-lg shadow-brand-500/25 transition-all hover:shadow-brand-500/40"
-              onClick={() => navigate('/auth/sso')}
+              onClick={() => navigate('/auth/sso?plan=pro')}
             >
               {t('pricing.pro.cta')}
             </Button>

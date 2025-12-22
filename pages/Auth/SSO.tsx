@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Mail, ArrowRight, Loader2 } from 'lucide-react';
 import { getTranslation } from '../../i18n';
 import { Language } from '../../types';
@@ -10,15 +10,26 @@ interface SSOProps {
 
 export const SSO: React.FC<SSOProps> = ({ lang }) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const t = (key: string) => getTranslation(key, lang);
   const [loading, setLoading] = useState<string | null>(null);
 
   const handleLogin = (provider: string) => {
     setLoading(provider);
+    
+    // Check if a plan was pre-selected via URL (from Pricing page)
+    const preSelectedPlan = searchParams.get('plan');
+
     // Simulate network request
     setTimeout(() => {
-      // Navigate to next step: Workspace Name
-      navigate('/auth/onboarding/workspace');
+      if (preSelectedPlan) {
+         // If plan is already chosen, save it and skip the Plan Selection step
+         localStorage.setItem('keido_plan', preSelectedPlan);
+         navigate('/auth/onboarding/workspace');
+      } else {
+         // Otherwise, default flow goes to Plan Selection
+         navigate('/auth/onboarding/plan');
+      }
     }, 1200);
   };
 

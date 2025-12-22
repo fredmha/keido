@@ -8,6 +8,7 @@ import { Dashboard } from './pages/App/Dashboard';
 import { AgentBuilder } from './pages/App/AgentBuilder';
 import { AgentsList } from './pages/App/AgentsList';
 import { BillingUpgrade } from './pages/App/BillingUpgrade';
+import { BillingDowngrade } from './pages/App/BillingDowngrade'; // Added
 import { AppShell } from './components/Layout/AppShell';
 
 // Auth Pages
@@ -18,6 +19,7 @@ import { OnboardingCategory } from './pages/Auth/OnboardingCategory';
 import { OnboardingIntegrations } from './pages/Auth/OnboardingIntegrations';
 import { OnboardingPrompt } from './pages/Auth/OnboardingPrompt';
 import { OnboardingThinking } from './pages/Auth/OnboardingThinking';
+import { OnboardingPlan } from './pages/Auth/OnboardingPlan';
 
 import { Language } from './types';
 import { Button } from './components/ui/Button';
@@ -49,6 +51,7 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
       <Routes>
         <Route element={<AuthLayout lang={lang} />}>
           <Route path="/auth/sso" element={<SSO lang={lang} />} />
+          <Route path="/auth/onboarding/plan" element={<OnboardingPlan lang={lang} />} />
           <Route path="/auth/onboarding/workspace" element={<OnboardingWorkspace lang={lang} />} />
           <Route path="/auth/onboarding/category" element={<OnboardingCategory lang={lang} />} />
           <Route path="/auth/onboarding/integrations" element={<OnboardingIntegrations lang={lang} />} />
@@ -145,6 +148,7 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
         <Route path="/app/agents" element={<AgentsList lang={lang} />} />
         <Route path="/app/builder/agent-design" element={<AgentBuilder lang={lang} />} />
         <Route path="/app/billing/upgrade" element={<BillingUpgrade />} />
+        <Route path="/app/billing/downgrade" element={<BillingDowngrade />} />
         <Route path="/app/settings" element={<div className="p-10 text-slate-500">Settings Demo Placeholder</div>} />
         <Route path="/app/*" element={<div className="p-10 text-slate-500">Not implemented in demo.</div>} />
       </Routes>
