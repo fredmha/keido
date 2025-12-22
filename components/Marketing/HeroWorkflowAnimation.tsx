@@ -3,7 +3,7 @@ import { MessageSquare, GitBranch, Slack, Database, Sparkles, MoreHorizontal } f
 
 export const HeroWorkflowAnimation: React.FC = () => {
   return (
-    <div className="relative w-full max-w-[500px] aspect-[5/4] mx-auto select-none pointer-events-none">
+      <div className="relative w-full max-w-[400px] sm:max-w-[500px] aspect-[5/4] mx-auto select-none pointer-events-none">
       {/* Styles for animations */}
       <style>{`
         @keyframes drawLine {
@@ -15,9 +15,9 @@ export const HeroWorkflowAnimation: React.FC = () => {
           to { opacity: 1; transform: scale(1) translateY(0); }
         }
         @keyframes pulse-ring {
-          0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
-          70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(139, 92, 246, 0); }
-          100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+          0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(61, 6, 248, 0.7); }
+          70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(61, 6, 248, 0); }
+          100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(61, 6, 248, 0); }
         }
         .anim-line {
           stroke-dasharray: 1000;
@@ -31,14 +31,14 @@ export const HeroWorkflowAnimation: React.FC = () => {
       `}</style>
 
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-brand-100/40 via-purple-50/20 to-transparent rounded-full blur-3xl -z-10"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-brand-100/40 via-brand-50/20 to-transparent rounded-full blur-3xl -z-10"></div>
 
       {/* SVG Connections Layer */}
       <svg className="absolute inset-0 w-full h-full z-0 overflow-visible">
         <defs>
           <linearGradient id="purpleGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#a78bfa" />
-            <stop offset="100%" stopColor="#7c3aed" />
+            <stop offset="0%" stopColor="#7B56FB" />
+            <stop offset="100%" stopColor="#3d06f8" />
           </linearGradient>
         </defs>
 

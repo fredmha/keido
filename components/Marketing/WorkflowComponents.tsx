@@ -70,7 +70,7 @@ export const WorkflowNode: React.FC<NodeProps> = ({ icon: Icon, title, subtitle,
 
 export const WorkflowDiagram: React.FC<{ className?: string, animated?: boolean }> = ({ className = '', animated = false }) => {
   return (
-    <div className={`relative w-[800px] h-[600px] mx-auto ${className}`}>
+    <div className={`relative w-full max-w-[800px] h-[400px] md:h-[600px] mx-auto ${className}`}>
       <style>{flowAnimationStyles}</style>
       
       {/* CONNECTOR LINES (SVG) */}
@@ -103,7 +103,7 @@ export const WorkflowDiagram: React.FC<{ className?: string, animated?: boolean 
 
         {/* --- ANIMATED FLOW LINES (Overlay) --- */}
         {animated && (
-           <g stroke="#8b5cf6" strokeWidth="2" fill="none" strokeLinejoin="round" strokeLinecap="round" className="animate-flow-line" strokeDasharray="12 12" opacity="0.8">
+           <g stroke="#3d06f8" strokeWidth="2" fill="none" strokeLinejoin="round" strokeLinecap="round" className="animate-flow-line" strokeDasharray="12 12" opacity="0.8">
               <path d="M 400 120 L 400 200" />
               <path d="M 400 282 L 400 330" />
               <path d="M 400 330 L 220 330 Q 200 330 200 350 L 200 400" />
@@ -184,7 +184,7 @@ export const AppMockFrame: React.FC = () => {
         <div className="w-10"></div> {/* Spacer for center alignment */}
       </div>
 
-      <div className="flex h-[600px] bg-[#FDFBFF] relative">
+      <div className="flex h-[600px] bg-[#fafafa] relative">
         {/* Sidebar */}
         <div className="w-64 bg-white border-r border-slate-100 py-6 hidden md:flex flex-col shrink-0 z-10 relative">
             <div className="px-6 mb-8 flex items-center gap-3 font-bold text-slate-800">
@@ -247,11 +247,11 @@ export const AppMockFrame: React.FC = () => {
 
 export const WorkflowFeatureView: React.FC = () => {
   return (
-    <div className="relative w-full h-[500px] bg-gradient-to-br from-brand-50/50 via-purple-50/30 to-white rounded-3xl border border-brand-100/50 overflow-hidden shadow-2xl shadow-brand-500/10 group hover:shadow-brand-500/20 transition-all duration-500 flex items-center justify-center">
+    <div className="relative w-full h-[400px] md:h-[500px] bg-gradient-to-br from-brand-50/50 via-brand-50/30 to-white rounded-2xl md:rounded-3xl border border-brand-100/50 overflow-hidden shadow-2xl shadow-brand-500/10 group hover:shadow-brand-500/20 transition-all duration-500 flex items-center justify-center">
        <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-60"></div>
        
        {/* Animated Diagram */}
-       <div className="w-[800px] h-[600px] scale-[0.9] transform translate-y-6">
+       <div className="w-full max-w-[800px] h-[400px] md:h-[600px] scale-[0.7] md:scale-[0.85] lg:scale-[0.9] transform translate-y-4 md:translate-y-6 overflow-hidden">
           <WorkflowDiagram animated={true} />
        </div>
     </div>

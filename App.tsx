@@ -79,18 +79,34 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
   if (!isApp) {
     return (
       <div className="min-h-screen flex flex-col font-sans text-slate-900">
-        <nav className="fixed w-full z-50 bg-[#FDFBFF]/90 backdrop-blur-md border-b border-transparent">
+        <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
           <div className="container mx-auto px-4 h-20 flex items-center justify-between">
             {/* Left: Logo & Links */}
             <div className="flex items-center gap-12">
               <div 
-                className="flex items-center gap-2 text-xl font-bold text-slate-900 cursor-pointer tracking-tight"
+                className="flex items-center gap-2.5 text-xl font-display font-bold text-slate-900 cursor-pointer tracking-tight"
                 onClick={() => navigate('/')}
               >
-                <div className="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center">
-                   <Zap size={18} fill="currentColor" />
+                {/* Inventive Logo: K shape with connecting nodes */}
+                <div className="relative w-10 h-10 flex items-center justify-center">
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute">
+                    {/* Background circle with gradient */}
+                    <circle cx="20" cy="20" r="18" fill="url(#logoGradient)" />
+                    <defs>
+                      <linearGradient id="logoGradient" x1="0" y1="0" x2="40" y2="40">
+                        <stop offset="0%" stopColor="#3d06f8" />
+                        <stop offset="100%" stopColor="#7B56FB" />
+                      </linearGradient>
+                    </defs>
+                    {/* K shape with modern design */}
+                    <path d="M14 12 L14 28 M14 20 L22 12 M14 20 L22 28" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    {/* Small connecting nodes */}
+                    <circle cx="26" cy="14" r="2" fill="white" opacity="0.8"/>
+                    <circle cx="28" cy="26" r="2" fill="white" opacity="0.8"/>
+                  </svg>
+                  <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-brand-400 rounded-full border-2 border-white shadow-sm"></div>
                 </div>
-                Keidra
+                <span className="font-display text-2xl">Keidra</span>
               </div>
               <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
                 <button onClick={() => navigate('/')} className="hover:text-brand-600 transition-colors">Home</button>
@@ -104,7 +120,7 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
             {/* Right: CTA */}
             <div className="hidden md:flex items-center gap-4">
               <Button variant="ghost" className="w-10 h-10 p-0 rounded-full border border-slate-200" icon={<Mail size={16} />}></Button>
-              <Button onClick={() => navigate('/auth/sso')} className="rounded-full px-6 bg-white text-slate-900 border border-slate-200 shadow-sm hover:bg-slate-50">
+              <Button onClick={() => navigate('/auth/sso')} className="rounded-full px-6 bg-white text-black border border-slate-200 shadow-sm hover:bg-slate-50 font-semibold">
                 Launch with Keidra
               </Button>
             </div>
@@ -134,9 +150,23 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
 
         <footer className="bg-white border-t border-slate-100 py-12">
           <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400 text-sm">
-             <div className="flex items-center gap-2 font-bold text-slate-900">
-               <div className="w-6 h-6 rounded bg-brand-500 text-white flex items-center justify-center"><Zap size={14} fill="currentColor"/></div>
-               Keidra
+             <div className="flex items-center gap-2 font-display font-bold text-slate-900">
+               <div className="relative w-7 h-7 flex items-center justify-center">
+                 <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <circle cx="20" cy="20" r="18" fill="url(#footerLogoGradient)" />
+                   <defs>
+                     <linearGradient id="footerLogoGradient" x1="0" y1="0" x2="40" y2="40">
+                       <stop offset="0%" stopColor="#3d06f8" />
+                       <stop offset="100%" stopColor="#7B56FB" />
+                     </linearGradient>
+                   </defs>
+                   <path d="M14 12 L14 28 M14 20 L22 12 M14 20 L22 28" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                   <circle cx="26" cy="14" r="2" fill="white" opacity="0.8"/>
+                   <circle cx="28" cy="26" r="2" fill="white" opacity="0.8"/>
+                 </svg>
+                 <div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-brand-400 rounded-full border border-white"></div>
+               </div>
+               <span className="font-display">Keidra</span>
              </div>
              <div>
                 © 2024 Keidra Inc. All rights reserved.
