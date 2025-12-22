@@ -27,8 +27,8 @@ export const OnboardingThinking: React.FC<Props> = ({ lang }) => {
       setTimeout(() => setStep(2), 2200),
       setTimeout(() => setStep(3), 3500),
       setTimeout(() => {
-        // Redirect to success state
-        navigate('/app/agents?generated=true');
+        // Redirect to Dashboard with new_user flag to trigger invite modal
+        navigate('/app/dashboard?new_user=true');
       }, 4500)
     ];
 

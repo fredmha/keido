@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Bot, Settings, LogOut, ChevronRight, Zap, Menu, X, CreditCard } from 'lucide-react';
+import { LayoutDashboard, Bot, Settings, LogOut, ChevronRight, Zap, Menu, X, CreditCard, Sparkles } from 'lucide-react';
 import { Language } from '../../types';
 import { getTranslation } from '../../i18n';
 
@@ -83,14 +83,30 @@ export const AppShell: React.FC<AppShellProps> = ({ children, lang }) => {
         </div>
 
         {/* Footer / Profile */}
-        <div className="p-4 border-t border-slate-50">
-          <div className="mb-4 px-2">
-             <button onClick={() => navigate('/app/billing/upgrade')} className="w-full bg-brand-50 hover:bg-brand-100 text-brand-700 text-xs font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-2 transition-colors border border-brand-100">
-                <CreditCard size={14} /> Upgrade Plan
+        <div className="p-4 border-t border-slate-50 bg-slate-50/30">
+          
+          {/* Subscription Widget in Sidebar */}
+          <div className="mb-4 bg-white rounded-xl border border-slate-200 p-3 shadow-sm">
+             <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Starter Plan</span>
+                <span className="text-[10px] font-bold text-brand-600 cursor-pointer hover:underline" onClick={() => navigate('/app/billing/upgrade')}>Manage</span>
+             </div>
+             <div className="mb-2">
+                <div className="flex justify-between text-[10px] font-medium text-slate-700 mb-1">
+                   <span>Runs</span>
+                   <span>850 / 1k</span>
+                </div>
+                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                   <div className="h-full bg-brand-500 rounded-full w-[85%]"></div>
+                </div>
+             </div>
+             <button onClick={() => navigate('/app/billing/upgrade')} className="w-full bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-sm shadow-brand-500/20">
+                <Sparkles size={12} fill="currentColor" /> Upgrade to Pro
              </button>
           </div>
           
-          <div className="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer group">
+          {/* User Profile */}
+          <div className="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-slate-100/50 transition-colors cursor-pointer group">
             <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-slate-200 to-slate-100 text-slate-600 flex items-center justify-center text-xs font-bold border border-slate-200 group-hover:border-slate-300">JD</div>
             <div className="flex-1 min-w-0">
                <div className="text-sm font-semibold text-slate-900 truncate">John Doe</div>
