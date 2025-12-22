@@ -7,7 +7,8 @@ import {
 import { Button } from '../../components/ui/Button';
 import { useNavigate } from 'react-router-dom';
 import { AreaChart, Area, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { AppMockFrame, WorkflowFeatureView } from '../../components/Marketing/WorkflowComponents';
+import { WorkflowFeatureView } from '../../components/Marketing/WorkflowComponents';
+import { HeroWorkflowAnimation } from '../../components/Marketing/HeroWorkflowAnimation';
 
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
@@ -19,59 +20,66 @@ export const Landing: React.FC = () => {
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-          <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-brand-200/20 rounded-full blur-[100px] mix-blend-multiply" />
-          <div className="absolute top-40 right-10 w-[500px] h-[500px] bg-accent-100/30 rounded-full blur-[100px] mix-blend-multiply" />
+          <div className="absolute top-[-100px] right-[-200px] w-[600px] h-[600px] bg-brand-200/20 rounded-full blur-[100px] mix-blend-multiply" />
+          <div className="absolute bottom-[-100px] left-[-200px] w-[600px] h-[600px] bg-accent-100/30 rounded-full blur-[100px] mix-blend-multiply" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center max-w-5xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm mb-8 animate-fade-in-up">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
-            </span>
-            <span className="text-xs font-semibold text-slate-600 tracking-wide uppercase">v2.0 Now Available</span>
-          </div>
+        <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            
+            {/* Left Column: Text */}
+            <div className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm mb-8 animate-fade-in-up self-start">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                </span>
+                <span className="text-xs font-semibold text-slate-600 tracking-wide uppercase">v2.0 Now Available</span>
+              </div>
 
-          <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-slate-900 mb-8 leading-[1.1]">
-            Boost your <span className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl shadow-lg shadow-brand-100 border border-slate-100 mx-2 align-middle text-brand-500 transform hover:scale-105 transition-transform"><Zap size={36} fill="currentColor" className="text-brand-500"/></span> productivity<br />
-            without the overwhelm.
-          </h1>
-          
-          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-            Imagine your tasks running themselves. With Keido, centralize operations,
-            ditch tedious work, and free your team to innovate and grow.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <Button variant="secondary" size="lg" className="bg-white shadow-sm font-semibold text-slate-600 px-8 hover:shadow-md transition-all">
-              Learn how
-            </Button>
-            <Button variant="gradient" size="lg" onClick={() => navigate('/auth/sso')} className="px-8 font-semibold shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all">
-              Experience Effortless Efficiency
-            </Button>
-          </div>
+              <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-slate-900 mb-8 leading-[1.1] animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                Boost your <span className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl shadow-lg shadow-brand-100 border border-slate-100 mx-2 align-middle text-brand-500 transform hover:scale-105 transition-transform"><Zap size={36} fill="currentColor" className="text-brand-500"/></span> productivity<br />
+                without the overwhelm.
+              </h1>
+              
+              <p className="text-lg md:text-xl text-slate-500 mb-10 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                Imagine your tasks running themselves. With Keido, centralize operations,
+                ditch tedious work, and free your team to innovate and grow.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                <Button variant="gradient" size="lg" onClick={() => navigate('/auth/sso')} className="px-8 font-semibold shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all">
+                  Experience Effortless Efficiency
+                </Button>
+                <Button variant="secondary" size="lg" className="bg-white shadow-sm font-semibold text-slate-600 px-8 hover:shadow-md transition-all">
+                  Learn how
+                </Button>
+              </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-slate-500 font-medium">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-brand-500" /> Quick setup
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4 text-sm text-slate-500 font-medium animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={18} className="text-brand-500" /> Quick setup
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck size={18} className="text-brand-500" /> GDPR compliant
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck size={18} className="text-brand-500" /> ISO27001
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck size={18} className="text-brand-500" /> GDPR compliant
-            </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck size={18} className="text-brand-500" /> ISO27001
-            </div>
-          </div>
-        </div>
 
-        {/* HERO MOCKUP (Upgraded High Fidelity) */}
-        <div className="container mx-auto px-4 mt-24">
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-             <AppMockFrame />
+            {/* Right Column: Workflow Animation */}
+            <div className="relative flex justify-center lg:justify-end lg:pr-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+               <div className="relative w-full max-w-[600px] transform scale-100 lg:scale-110">
+                  <HeroWorkflowAnimation />
+               </div>
+            </div>
+
           </div>
         
           {/* LOGO STRIP */}
-          <div className="py-16 mt-12 border-b border-slate-100">
+          <div className="py-16 mt-12 border-b border-slate-100 animate-fade-in" style={{ animationDelay: '0.8s' }}>
              <div className="text-center text-sm font-semibold text-slate-400 mb-8 uppercase tracking-widest">Trusted by innovative teams</div>
              <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale transition-all hover:grayscale-0">
                  <div className="flex items-center gap-2 font-bold text-xl text-slate-800"><HexagonIcon /> ACME Corp</div>

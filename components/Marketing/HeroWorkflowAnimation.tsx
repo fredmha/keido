@@ -1,0 +1,160 @@
+import React from 'react';
+import { MessageSquare, GitBranch, Slack, Database, Sparkles, MoreHorizontal } from 'lucide-react';
+
+export const HeroWorkflowAnimation: React.FC = () => {
+  return (
+    <div className="relative w-full max-w-[500px] aspect-[5/4] mx-auto select-none pointer-events-none">
+      {/* Styles for animations */}
+      <style>{`
+        @keyframes drawLine {
+          from { stroke-dashoffset: 1000; }
+          to { stroke-dashoffset: 0; }
+        }
+        @keyframes fadeInScale {
+          from { opacity: 0; transform: scale(0.9) translateY(10px); }
+          to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes pulse-ring {
+          0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
+          70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(139, 92, 246, 0); }
+          100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+        }
+        .anim-line {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: drawLine 2s ease-out forwards;
+        }
+        .anim-node {
+          opacity: 0;
+          animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+      `}</style>
+
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-brand-100/40 via-purple-50/20 to-transparent rounded-full blur-3xl -z-10"></div>
+
+      {/* SVG Connections Layer */}
+      <svg className="absolute inset-0 w-full h-full z-0 overflow-visible">
+        <defs>
+          <linearGradient id="purpleGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#a78bfa" />
+            <stop offset="100%" stopColor="#7c3aed" />
+          </linearGradient>
+        </defs>
+
+        {/* 1. Trigger to Branch */}
+        <path 
+          d="M 250 80 L 250 140" 
+          stroke="#cbd5e1" strokeWidth="2" fill="none" 
+          className="anim-line" style={{ animationDelay: '0.5s' }}
+        />
+
+        {/* 2. Branch to Right (Notion) */}
+        <path 
+          d="M 250 200 L 250 230 Q 250 250 270 250 L 380 250 Q 400 250 400 270 L 400 300" 
+          stroke="#cbd5e1" strokeWidth="2" fill="none" 
+          className="anim-line" style={{ animationDelay: '1.5s' }}
+        />
+
+        {/* 3. Branch to Left (Slack) */}
+        <path 
+          d="M 250 200 L 250 230 Q 250 250 230 250 L 140 250 Q 120 250 120 270 L 120 300" 
+          stroke="#cbd5e1" strokeWidth="2" fill="none" 
+          className="anim-line" style={{ animationDelay: '1.5s' }}
+        />
+
+        {/* 4. Slack to AI (Left Down) */}
+        <path 
+          d="M 120 380 L 120 420" 
+          stroke="#cbd5e1" strokeWidth="2" fill="none" 
+          className="anim-line" style={{ animationDelay: '2.5s' }}
+        />
+      </svg>
+
+      {/* NODES LAYER */}
+
+      {/* 1. Trigger: Intercom */}
+      <div 
+        className="absolute top-0 left-1/2 -translate-x-1/2 z-10 anim-node"
+        style={{ animationDelay: '0s' }}
+      >
+        <div className="bg-white p-4 pr-8 rounded-2xl border border-slate-100 shadow-xl shadow-brand-900/5 flex items-center gap-4 min-w-[260px]">
+          <div className="w-12 h-12 rounded-xl bg-[#1f2937] text-white flex items-center justify-center shrink-0 shadow-md">
+            <MessageSquare size={24} fill="currentColor" />
+          </div>
+          <div>
+            <div className="text-slate-900 font-bold text-sm">New Intercom message</div>
+            <div className="text-slate-400 text-xs font-medium">trigger</div>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. Branch: Logic */}
+      <div 
+        className="absolute top-[140px] left-1/2 -translate-x-1/2 z-10 anim-node"
+        style={{ animationDelay: '0.8s' }}
+      >
+        <div className="bg-white p-4 pr-6 rounded-2xl border border-slate-100 shadow-xl shadow-brand-900/5 flex items-center gap-4 min-w-[280px]">
+          <div className="w-12 h-12 rounded-xl bg-white border border-slate-100 text-slate-600 flex items-center justify-center shrink-0">
+             <GitBranch size={24} />
+          </div>
+          <div>
+            <div className="text-slate-900 font-bold text-sm">Check if existing contact?</div>
+            <div className="text-slate-400 text-xs font-medium">branch-1</div>
+          </div>
+        </div>
+        {/* Yes Label */}
+        <div className="absolute -bottom-8 right-8 bg-white px-2 py-0.5 rounded text-[10px] font-bold text-slate-500 shadow-sm border border-slate-100">Yes</div>
+      </div>
+
+      {/* 3. Action Left: Slack */}
+      <div 
+        className="absolute top-[300px] left-[120px] -translate-x-1/2 z-10 anim-node"
+        style={{ animationDelay: '1.8s' }}
+      >
+        <div className="bg-white p-3 pr-6 rounded-2xl border border-slate-100 shadow-xl shadow-brand-900/5 flex items-center gap-3 min-w-[200px]">
+          <div className="w-10 h-10 rounded-lg bg-white border border-slate-50 text-[#4A154B] flex items-center justify-center shrink-0">
+             <Slack size={20} />
+          </div>
+          <div>
+            <div className="text-slate-900 font-bold text-sm">Message sales</div>
+            <div className="text-slate-400 text-xs font-medium">#new-leads</div>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. Action Right: Notion */}
+      <div 
+        className="absolute top-[300px] left-[380px] -translate-x-1/2 z-10 anim-node"
+        style={{ animationDelay: '2.0s' }}
+      >
+        <div className="bg-white p-3 pr-6 rounded-2xl border border-slate-100 shadow-xl shadow-brand-900/5 flex items-center gap-3 min-w-[220px]">
+          <div className="w-10 h-10 rounded-lg bg-white border border-slate-50 text-slate-800 flex items-center justify-center shrink-0">
+             <Database size={20} />
+          </div>
+          <div>
+            <div className="text-slate-900 font-bold text-sm">Create CRM record</div>
+            <div className="text-slate-400 text-xs font-medium">notion-2</div>
+          </div>
+        </div>
+      </div>
+
+      {/* 5. Action Bottom: AI */}
+      <div 
+        className="absolute top-[420px] left-[120px] -translate-x-1/2 z-10 anim-node"
+        style={{ animationDelay: '2.8s' }}
+      >
+        <div className="bg-white p-3 pr-6 rounded-2xl border border-slate-100 shadow-xl shadow-brand-900/5 flex items-center gap-3 min-w-[200px]">
+          <div className="w-10 h-10 rounded-lg bg-[#10a37f] text-white flex items-center justify-center shrink-0 shadow-sm">
+             <Sparkles size={18} />
+          </div>
+          <div>
+            <div className="text-slate-900 font-bold text-sm">Write an email</div>
+            <div className="text-slate-400 text-xs font-medium">chatgpt-1</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  );
+};
