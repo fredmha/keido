@@ -8,7 +8,7 @@ import { Dashboard } from './pages/App/Dashboard';
 import { AgentBuilder } from './pages/App/AgentBuilder';
 import { AgentsList } from './pages/App/AgentsList';
 import { BillingUpgrade } from './pages/App/BillingUpgrade';
-import { BillingDowngrade } from './pages/App/BillingDowngrade'; // Added
+import { BillingDowngrade } from './pages/App/BillingDowngrade';
 import { AppShell } from './components/Layout/AppShell';
 
 // Auth Pages
@@ -20,6 +20,12 @@ import { OnboardingIntegrations } from './pages/Auth/OnboardingIntegrations';
 import { OnboardingPrompt } from './pages/Auth/OnboardingPrompt';
 import { OnboardingThinking } from './pages/Auth/OnboardingThinking';
 import { OnboardingPlan } from './pages/Auth/OnboardingPlan';
+
+// Bespoke Flows
+import { OnboardingFlowBusiness } from './pages/Auth/OnboardingFlowBusiness';
+import { OnboardingFlowPersonal } from './pages/Auth/OnboardingFlowPersonal';
+import { OnboardingFlowEducation } from './pages/Auth/OnboardingFlowEducation';
+import { OnboardingFlowOther } from './pages/Auth/OnboardingFlowOther';
 
 import { Language } from './types';
 import { Button } from './components/ui/Button';
@@ -54,6 +60,13 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
           <Route path="/auth/onboarding/plan" element={<OnboardingPlan lang={lang} />} />
           <Route path="/auth/onboarding/workspace" element={<OnboardingWorkspace lang={lang} />} />
           <Route path="/auth/onboarding/category" element={<OnboardingCategory lang={lang} />} />
+          
+          {/* Bespoke Category Flows */}
+          <Route path="/auth/onboarding/flow/business" element={<OnboardingFlowBusiness lang={lang} />} />
+          <Route path="/auth/onboarding/flow/personal" element={<OnboardingFlowPersonal lang={lang} />} />
+          <Route path="/auth/onboarding/flow/education" element={<OnboardingFlowEducation lang={lang} />} />
+          <Route path="/auth/onboarding/flow/other" element={<OnboardingFlowOther lang={lang} />} />
+
           <Route path="/auth/onboarding/integrations" element={<OnboardingIntegrations lang={lang} />} />
           <Route path="/auth/onboarding/prompt" element={<OnboardingPrompt lang={lang} />} />
           <Route path="/auth/onboarding/thinking" element={<OnboardingThinking lang={lang} />} />

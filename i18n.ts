@@ -121,6 +121,19 @@ export const translations: Translation = {
   "onboarding.cat.edu": { ja: "Education / Research", en: "Education / Research" },
   "onboarding.cat.other": { ja: "Other", en: "Other" },
 
+  // New Flows
+  "flow.business.title": { ja: "Tell us about your organization", en: "Tell us about your organization" },
+  "flow.business.subtitle": { ja: "We'll recommend workflows used by similar teams.", en: "We'll recommend workflows used by similar teams." },
+  
+  "flow.personal.title": { ja: "What's your primary focus?", en: "What's your primary focus?" },
+  "flow.personal.subtitle": { ja: "Let's optimize your personal workspace.", en: "Let's optimize your personal workspace." },
+  
+  "flow.edu.title": { ja: "Academic Profile", en: "Academic Profile" },
+  "flow.edu.subtitle": { ja: "Tools tailored for research and learning.", en: "Tools tailored for research and learning." },
+  
+  "flow.other.title": { ja: "Describe your needs", en: "Describe your needs" },
+  "flow.other.subtitle": { ja: "We're building for everyone. Tell us more.", en: "We're building for everyone. Tell us more." },
+
   "onboarding.prompt.title": { ja: "What is your first mission?", en: "What is your first mission?" },
   "onboarding.prompt.subtitle": { ja: "Describe a task you want to automate. Keido will build the agent for you.", en: "Describe a task you want to automate. Keido will build the agent for you." },
   "onboarding.prompt.placeholder": { ja: "e.g. When a new lead fills out a Typeform, add them to HubSpot and send a Slack notification...", en: "e.g. When a new lead fills out a Typeform, add them to HubSpot and send a Slack notification..." },

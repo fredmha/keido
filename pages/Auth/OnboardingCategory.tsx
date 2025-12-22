@@ -21,6 +21,28 @@ export const OnboardingCategory: React.FC<Props> = ({ lang }) => {
     { id: 'other', icon: LayoutGrid, label: 'onboarding.cat.other' },
   ];
 
+  const handleContinue = () => {
+    if (!selected) return;
+    
+    // Bespoke routing based on selection
+    switch(selected) {
+      case 'business':
+        navigate('/auth/onboarding/flow/business');
+        break;
+      case 'personal':
+        navigate('/auth/onboarding/flow/personal');
+        break;
+      case 'education':
+        navigate('/auth/onboarding/flow/education');
+        break;
+      case 'other':
+        navigate('/auth/onboarding/flow/other');
+        break;
+      default:
+        navigate('/auth/onboarding/integrations');
+    }
+  };
+
   return (
     <div className="max-w-2xl mx-auto">
       <div className="text-center mb-10">
@@ -35,7 +57,7 @@ export const OnboardingCategory: React.FC<Props> = ({ lang }) => {
             onClick={() => setSelected(cat.id)}
             className={`p-6 rounded-2xl border text-left transition-all duration-200 flex flex-col items-center justify-center gap-4 h-40 group ${
               selected === cat.id 
-                ? 'bg-brand-50 border-brand-500 ring-1 ring-brand-500 shadow-md' 
+                ? 'bg-brand-50 border-brand-500 ring-1 ring-brand-500 shadow-md transform scale-[1.02]' 
                 : 'bg-white border-slate-200 hover:border-brand-200 hover:bg-slate-50'
             }`}
           >
@@ -55,8 +77,8 @@ export const OnboardingCategory: React.FC<Props> = ({ lang }) => {
         <Button 
           size="lg" 
           disabled={!selected} 
-          onClick={() => navigate('/auth/onboarding/integrations')}
-          className="w-full sm:w-auto"
+          onClick={handleContinue}
+          className="w-full sm:w-auto shadow-lg shadow-brand-500/20"
           icon={<ArrowRight size={18} />}
         >
            Continue
