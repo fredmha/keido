@@ -87,26 +87,30 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
                 className="flex items-center gap-2.5 text-xl font-display font-bold text-slate-900 cursor-pointer tracking-tight"
                 onClick={() => navigate('/')}
               >
-                {/* Inventive Logo: K shape with connecting nodes */}
-                <div className="relative w-10 h-10 flex items-center justify-center">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute">
-                    {/* Background circle with gradient */}
-                    <circle cx="20" cy="20" r="18" fill="url(#logoGradient)" />
+                {/* Enhanced Logo: Modern K with geometric elements */}
+                <div className="relative w-11 h-11 flex items-center justify-center">
+                  <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute">
                     <defs>
-                      <linearGradient id="logoGradient" x1="0" y1="0" x2="40" y2="40">
+                      <linearGradient id="logoGradientNav" x1="0" y1="0" x2="44" y2="44">
                         <stop offset="0%" stopColor="#3d06f8" />
                         <stop offset="100%" stopColor="#7B56FB" />
                       </linearGradient>
+                      <filter id="shadow">
+                        <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.3"/>
+                      </filter>
                     </defs>
-                    {/* K shape with modern design */}
-                    <path d="M14 12 L14 28 M14 20 L22 12 M14 20 L22 28" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    {/* Small connecting nodes */}
-                    <circle cx="26" cy="14" r="2" fill="white" opacity="0.8"/>
-                    <circle cx="28" cy="26" r="2" fill="white" opacity="0.8"/>
+                    {/* Rounded square background */}
+                    <rect x="2" y="2" width="40" height="40" rx="10" fill="url(#logoGradientNav)" filter="url(#shadow)"/>
+                    {/* Bold K letter */}
+                    <path d="M14 10 L14 34 M14 22 L24 10 M14 22 L24 34" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    {/* Decorative elements - connected dots */}
+                    <circle cx="30" cy="12" r="2.5" fill="white" opacity="0.9"/>
+                    <circle cx="32" cy="32" r="2.5" fill="white" opacity="0.9"/>
+                    {/* Connecting line */}
+                    <path d="M30 12 L32 32" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
                   </svg>
-                  <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-brand-400 rounded-full border-2 border-white shadow-sm"></div>
                 </div>
-                <span className="font-display text-2xl">Keidra</span>
+                <span className="font-display text-2xl font-bold tracking-tight">Keidra</span>
               </div>
               <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
                 <button onClick={() => navigate('/')} className="hover:text-brand-600 transition-colors">Home</button>
@@ -152,21 +156,21 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
           <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400 text-sm">
              <div className="flex items-center gap-2 font-display font-bold text-slate-900">
                <div className="relative w-7 h-7 flex items-center justify-center">
-                 <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                   <circle cx="20" cy="20" r="18" fill="url(#footerLogoGradient)" />
+                 <svg width="28" height="28" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                    <defs>
-                     <linearGradient id="footerLogoGradient" x1="0" y1="0" x2="40" y2="40">
+                     <linearGradient id="footerLogoGradient" x1="0" y1="0" x2="44" y2="44">
                        <stop offset="0%" stopColor="#3d06f8" />
                        <stop offset="100%" stopColor="#7B56FB" />
                      </linearGradient>
                    </defs>
-                   <path d="M14 12 L14 28 M14 20 L22 12 M14 20 L22 28" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                   <circle cx="26" cy="14" r="2" fill="white" opacity="0.8"/>
-                   <circle cx="28" cy="26" r="2" fill="white" opacity="0.8"/>
+                   <rect x="2" y="2" width="40" height="40" rx="8" fill="url(#footerLogoGradient)"/>
+                   <path d="M12 8 L12 36 M12 22 L22 8 M12 22 L22 36" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                   <circle cx="28" cy="10" r="2" fill="white" opacity="0.9"/>
+                   <circle cx="30" cy="34" r="2" fill="white" opacity="0.9"/>
+                   <path d="M28 10 L30 34" stroke="white" strokeWidth="1.2" strokeLinecap="round" opacity="0.6"/>
                  </svg>
-                 <div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-brand-400 rounded-full border border-white"></div>
                </div>
-               <span className="font-display">Keidra</span>
+               <span className="font-display font-bold">Keidra</span>
              </div>
              <div>
                 © 2024 Keidra Inc. All rights reserved.

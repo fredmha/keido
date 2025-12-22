@@ -23,7 +23,7 @@ export const Landing: React.FC = () => {
         { label: "4x", desc: "Increase in outbound responses" },
         { label: "2", desc: "ROI-positive in just 2 weeks" }
       ],
-      avatar: "SD"
+      image: "/images/Generated Image December 23, 2025 - 10_02AM.jpeg"
     },
     {
       name: "Michael Rodriguez",
@@ -33,7 +33,7 @@ export const Landing: React.FC = () => {
         { label: "3x", desc: "Faster response time" },
         { label: "40%", desc: "Increase in qualified leads" }
       ],
-      avatar: "MR"
+      image: "/images/Generated Image December 23, 2025 - 10_05AM.jpeg"
     },
     {
       name: "Emma Chen",
@@ -43,7 +43,7 @@ export const Landing: React.FC = () => {
         { label: "15hrs", desc: "Saved per week per team member" },
         { label: "99.9%", desc: "Uptime guarantee" }
       ],
-      avatar: "EC"
+      image: "/images/Generated Image December 23, 2025 - 10_07AM.jpeg"
     }
   ];
 
@@ -216,14 +216,14 @@ export const Landing: React.FC = () => {
                  <Zap size={14} /> Automated Workflows
                </div>
                <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
-                  Calendar Booking on Autopilot
+                  Workflows That Think for You
                </h2>
                <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 md:mb-8">
-                  Schedules meetings the moment a lead qualifies—often while your team sleeps. Our AI books 5x more demos without human back-and-forth and drops them straight into your calendar.
+                  Build intelligent automation chains that adapt to your business logic. Connect triggers, conditions, and actions in minutes—no coding required. Your workflows learn and improve over time.
                </p>
                <div className="flex flex-col sm:flex-row gap-4">
                  <Button variant="gradient" size="lg" className="shadow-lg shadow-brand-500/20 w-full sm:w-auto" onClick={() => navigate('/auth/sso')}>
-                    Get started
+                    Build your workflow
                  </Button>
                </div>
             </div>
@@ -246,13 +246,13 @@ export const Landing: React.FC = () => {
                     <Zap size={14} /> Seamless Integrations
                   </div>
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
-                     Scale That Humans Can't Match
+                     Connect Everything, Automate Anything
                   </h2>
                   <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-6 md:mb-8">
-                     Over one million personalized touches every month—Keidra engages prospects at machine speed while your team focuses on closing.
+                     Sync data across 200+ tools instantly. When something happens in Slack, update your CRM, send an email, and create a task—all automatically. Your entire tech stack works as one system.
                   </p>
                   <Button variant="gradient" size="lg" className="shadow-lg shadow-brand-500/20 w-full sm:w-auto" onClick={() => navigate('/auth/sso')}>
-                     Get started
+                     Explore integrations
                   </Button>
                </div>
 
@@ -298,7 +298,7 @@ export const Landing: React.FC = () => {
                 Case Studies
               </h2>
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl">
-                Keidra meets the highest security, uptime, and support standards—so your revenue engine never slows down, no matter how fast you grow.
+                See how real teams are transforming their sales and operations. From startups to enterprises, discover the results our customers are achieving.
               </p>
             </div>
             <Button variant="outline" size="lg" className="whitespace-nowrap w-full sm:w-auto mt-4 md:mt-0">
@@ -315,10 +315,21 @@ export const Landing: React.FC = () => {
               >
                 {caseStudies.map((study, idx) => (
                   <div key={idx} className="min-w-full flex flex-col md:flex-row">
-                    {/* Left: Image/Avatar */}
-                    <div className="md:w-2/5 bg-gradient-to-br from-brand-50 to-white p-6 md:p-8 lg:p-12 flex items-center justify-center">
-                      <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-white text-3xl sm:text-4xl md:text-5xl font-display font-bold shadow-xl shadow-brand-500/30">
-                        {study.avatar}
+                    {/* Left: Image */}
+                    <div className="md:w-2/5 bg-gradient-to-br from-brand-50 to-white p-6 md:p-8 lg:p-12 flex items-center justify-center relative overflow-hidden">
+                      <div className="relative w-full max-w-[300px] md:max-w-[350px] aspect-[3/4]">
+                        <img 
+                          src={study.image} 
+                          alt={`${study.name}, ${study.title}`}
+                          className="w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white"
+                          loading="lazy"
+                          onError={(e) => {
+                            // Fallback if image doesn't load
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-2xl pointer-events-none"></div>
                       </div>
                     </div>
 
