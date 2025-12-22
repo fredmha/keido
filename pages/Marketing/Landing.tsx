@@ -7,6 +7,7 @@ import {
 import { Button } from '../../components/ui/Button';
 import { useNavigate } from 'react-router-dom';
 import { AreaChart, Area, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { AppMockFrame, WorkflowFeatureView } from '../../components/Marketing/WorkflowComponents';
 
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
@@ -63,106 +64,16 @@ export const Landing: React.FC = () => {
           </div>
         </div>
 
-        {/* HERO MOCKUP */}
+        {/* HERO MOCKUP (Upgraded High Fidelity) */}
         <div className="container mx-auto px-4 mt-24">
-          <div className="relative mx-auto max-w-6xl rounded-t-2xl border border-slate-200 bg-white shadow-2xl overflow-hidden ring-1 ring-slate-900/5">
-             <div className="h-12 bg-white border-b border-slate-100 flex items-center px-4 gap-2 sticky top-0 z-20">
-                <div className="flex gap-1.5">
-                   <div className="w-3 h-3 rounded-full bg-slate-200"></div>
-                   <div className="w-3 h-3 rounded-full bg-slate-200"></div>
-                   <div className="w-3 h-3 rounded-full bg-slate-200"></div>
-                </div>
-                <div className="ml-4 px-3 py-1 bg-slate-50 rounded-md text-xs text-slate-400 flex items-center gap-2 font-mono">
-                   <Zap size={10} /> app.keido.com/workflows
-                </div>
-             </div>
-
-             <div className="flex h-[600px] bg-[#f8f7fa] relative">
-                {/* Sidebar */}
-                <div className="w-64 bg-white border-r border-slate-100 p-6 hidden md:block shrink-0 z-10">
-                   <div className="flex items-center gap-2 mb-10 font-bold text-lg text-slate-900">
-                      <div className="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center shadow-lg shadow-brand-500/30">
-                        <Zap size={16} fill="currentColor"/>
-                      </div>
-                      Keido
-                   </div>
-                   <div className="space-y-1">
-                      <div className="px-3 py-2 text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Main Menu</div>
-                      <div className="px-3 py-2.5 flex items-center gap-3 text-slate-600 hover:bg-slate-50 rounded-lg text-sm font-medium transition-colors cursor-pointer"><LayoutTemplate size={18} /> Dashboard</div>
-                      <div className="px-3 py-2.5 flex items-center gap-3 text-slate-600 hover:bg-slate-50 rounded-lg text-sm font-medium transition-colors cursor-pointer"><Bot size={18} /> Agents</div>
-                      <div className="px-3 py-2.5 flex items-center gap-3 bg-brand-50 text-brand-700 rounded-lg text-sm font-medium transition-colors cursor-pointer"><Zap size={18} /> Workflows</div>
-                      <div className="px-3 py-2.5 flex items-center gap-3 text-slate-600 hover:bg-slate-50 rounded-lg text-sm font-medium transition-colors cursor-pointer"><Database size={18} /> Data</div>
-                   </div>
-                </div>
-                
-                {/* Canvas */}
-                <div className="flex-1 relative overflow-hidden bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px]">
-                    {/* Floating Node: Trigger */}
-                    <div className="absolute top-20 left-1/2 -translate-x-1/2 w-72 bg-white rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-slate-100 p-4 flex items-center gap-4 z-10 hover:shadow-lg transition-shadow cursor-default">
-                        <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center text-white shrink-0 shadow-lg shadow-slate-900/20">
-                           <LayoutTemplate size={24} />
-                        </div>
-                        <div>
-                           <div className="text-sm font-bold text-slate-900">New Intercom message</div>
-                           <div className="text-xs text-slate-500 mt-0.5">trigger • instant</div>
-                        </div>
-                    </div>
-
-                    {/* Connection Lines (SVG) */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                       {/* Vertical Main */}
-                       <path d="M 50% 160 L 50% 240" stroke="#cbd5e1" strokeWidth="2" fill="none" />
-                       {/* Branch Logic */}
-                       <path d="M 50% 320 L 50% 360" stroke="#cbd5e1" strokeWidth="2" fill="none" />
-                       <path d="M 50% 360 L 35% 360 L 35% 400" stroke="#cbd5e1" strokeWidth="2" fill="none" strokeDasharray="4 4" />
-                       <path d="M 50% 360 L 65% 360 L 65% 400" stroke="#cbd5e1" strokeWidth="2" fill="none" />
-                    </svg>
-
-                    {/* Floating Node: Logic */}
-                    <div className="absolute top-60 left-1/2 -translate-x-1/2 w-80 bg-white rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-slate-100 p-4 flex items-center gap-4 z-10">
-                        <div className="w-12 h-12 rounded-xl bg-white border-2 border-slate-100 flex items-center justify-center text-slate-700 shrink-0">
-                           <Bot size={24} />
-                        </div>
-                        <div>
-                           <div className="text-sm font-bold text-slate-900">Check if existing contact?</div>
-                           <div className="text-xs text-slate-500 mt-0.5">branch-1 • logic</div>
-                        </div>
-                        <div className="absolute -bottom-3 left-1/2 translate-x-12 bg-white border border-slate-200 px-2 py-0.5 rounded-full text-[10px] font-bold text-brand-600 shadow-sm">Yes</div>
-                    </div>
-
-                    {/* Floating Node: Action 1 */}
-                    <div className="absolute top-[400px] left-[35%] -translate-x-1/2 w-64 bg-white rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-slate-100 p-3 flex items-center gap-3 opacity-60 grayscale">
-                         <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 shrink-0">
-                           <MessageSquare size={20} />
-                        </div>
-                        <div>
-                           <div className="text-sm font-semibold text-slate-700">Message sales</div>
-                           <div className="text-xs text-slate-400">#new-leads</div>
-                        </div>
-                    </div>
-
-                    {/* Floating Node: Action 2 */}
-                    <div className="absolute top-[400px] left-[65%] -translate-x-1/2 w-64 bg-white rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-slate-100 p-3 flex items-center gap-3">
-                         <div className="w-10 h-10 rounded-lg bg-white border border-slate-100 flex items-center justify-center text-slate-700 shrink-0 shadow-sm">
-                           <Database size={20} />
-                        </div>
-                        <div>
-                           <div className="text-sm font-semibold text-slate-900">Create CRM record</div>
-                           <div className="text-xs text-slate-500">notion-db-2</div>
-                        </div>
-                         <div className="ml-auto">
-                            <CheckCircle2 size={16} className="text-emerald-500" />
-                         </div>
-                    </div>
-                </div>
-             </div>
+          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+             <AppMockFrame />
           </div>
-          
+        
           {/* LOGO STRIP */}
           <div className="py-16 mt-12 border-b border-slate-100">
              <div className="text-center text-sm font-semibold text-slate-400 mb-8 uppercase tracking-widest">Trusted by innovative teams</div>
              <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale transition-all hover:grayscale-0">
-                 {/* Replaced with generic but professional looking text/icon combos */}
                  <div className="flex items-center gap-2 font-bold text-xl text-slate-800"><HexagonIcon /> ACME Corp</div>
                  <div className="flex items-center gap-2 font-bold text-xl text-slate-800"><TriangleIcon /> Vercel</div>
                  <div className="flex items-center gap-2 font-bold text-xl text-slate-800"><CircleIcon /> Loom</div>
@@ -173,8 +84,40 @@ export const Landing: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. INTEGRATIONS SECTION (NEW) */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      {/* 2. AUTOMATED WORKFLOWS (NEW SECTION) */}
+      <section className="py-24 bg-white relative">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            
+            {/* Left Copy */}
+            <div className="lg:w-5/12">
+               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-xs font-bold tracking-wide uppercase mb-6">
+                 <Zap size={14} /> Automated Workflows
+               </div>
+               <h2 className="text-4xl md:text-5xl font-semibold text-slate-900 mb-6 leading-tight">
+                  Save hours every day
+               </h2>
+               <p className="text-lg text-slate-500 leading-relaxed mb-8">
+                  Let our intelligent automation tools handle repetitive tasks, so you can reclaim your time and focus on strategic initiatives.
+               </p>
+               <div className="flex flex-col sm:flex-row gap-4">
+                 <Button variant="gradient" size="lg" className="shadow-lg shadow-brand-500/20" onClick={() => navigate('/auth/sso')}>
+                    Request your demo
+                 </Button>
+               </div>
+            </div>
+
+            {/* Right Visual (Feature Diagram) */}
+            <div className="lg:w-7/12 w-full">
+               <WorkflowFeatureView />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3. INTEGRATIONS SECTION */}
+      <section className="py-24 bg-[#FDFBFF] relative overflow-hidden border-t border-slate-100">
          <div className="container mx-auto px-4">
             <div className="flex flex-col lg:flex-row items-center gap-20">
                <div className="lg:w-5/12">
@@ -225,7 +168,7 @@ export const Landing: React.FC = () => {
          </div>
       </section>
 
-      {/* 3. COMPARISON SECTION (NEW - DARK MODE) */}
+      {/* 4. COMPARISON SECTION (DARK MODE) */}
       <section className="py-24 bg-[#1a1825] text-white relative overflow-hidden">
          {/* Glow effects */}
          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[100px]" />
@@ -289,7 +232,7 @@ export const Landing: React.FC = () => {
          </div>
       </section>
 
-      {/* 4. STEPS SECTION (NEW) */}
+      {/* 5. STEPS SECTION */}
       <section className="py-24 bg-[#FDFBFF]">
          <div className="container mx-auto px-4">
             <div className="text-center mb-16">
@@ -321,7 +264,7 @@ export const Landing: React.FC = () => {
          </div>
       </section>
 
-      {/* 5. REQUEST DEMO FORM (NEW) */}
+      {/* 6. REQUEST DEMO FORM */}
       <section className="py-24 bg-white relative overflow-hidden">
          <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12">
@@ -389,7 +332,7 @@ export const Landing: React.FC = () => {
          </div>
       </section>
 
-      {/* 6. ANALYTICS SECTION (Refined) */}
+      {/* 7. ANALYTICS SECTION (Refined) */}
       <section className="py-24 bg-[#FDFBFF] relative overflow-hidden">
         <div className="container mx-auto px-4">
            <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
