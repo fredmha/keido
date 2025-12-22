@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Landing } from './pages/Marketing/Landing';
 import { Pricing } from './pages/Marketing/Pricing';
+
+// App Pages
 import { Dashboard } from './pages/App/Dashboard';
 import { AgentBuilder } from './pages/App/AgentBuilder';
+import { AgentsList } from './pages/App/AgentsList';
+import { BillingUpgrade } from './pages/App/BillingUpgrade';
+import { AppShell } from './components/Layout/AppShell';
+
 // Auth Pages
 import { AuthLayout } from './pages/Auth/AuthLayout';
 import { SSO } from './pages/Auth/SSO';
@@ -16,10 +22,10 @@ import { OnboardingThinking } from './pages/Auth/OnboardingThinking';
 import { Language } from './types';
 import { Button } from './components/ui/Button';
 import { getTranslation } from './i18n';
-import { Menu, X, LayoutDashboard, Bot, Settings, LogOut, ChevronRight, Mail, Zap } from 'lucide-react';
+import { Menu, X, Mail, Zap } from 'lucide-react';
 
 const App: React.FC = () => {
-  const [lang, setLang] = useState<Language>('en'); // Default to English
+  const [lang, setLang] = useState<Language>('en');
 
   return (
     <Router>
@@ -37,7 +43,7 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
   const isAuth = location.pathname.startsWith('/auth');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // 1. Auth Layout (Empty wrapper with routes)
+  // 1. Auth Layout
   if (isAuth) {
     return (
       <Routes>
@@ -53,7 +59,7 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
     );
   }
 
-  // 2. Marketing Header
+  // 2. Marketing Header (for non-app, non-auth pages)
   if (!isApp) {
     return (
       <div className="min-h-screen flex flex-col font-sans text-slate-900">
@@ -130,64 +136,20 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
     );
   }
 
-  // 3. App Layout (Sidebar + Content)
+  // 3. App Layout (Shell + Routes)
   return (
-    <div className="flex h-screen bg-[#FDFBFF] font-sans text-slate-900 overflow-hidden">
-      {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-slate-100 flex-shrink-0 flex flex-col">
-        <div className="h-16 flex items-center px-6 border-b border-slate-50">
-           <div className="flex items-center gap-2 text-xl font-bold text-slate-900 cursor-pointer" onClick={() => navigate('/')}>
-             <div className="w-6 h-6 rounded bg-brand-500 text-white flex items-center justify-center"><Zap size={14} fill="currentColor"/></div>
-             Keido
-           </div>
-        </div>
-
-        <div className="flex-1 p-4 space-y-1 overflow-y-auto">
-          <SidebarItem icon={LayoutDashboard} label={t('nav.dashboard')} active={location.pathname === '/app'} onClick={() => navigate('/app')} />
-          <SidebarItem icon={Bot} label={t('nav.agents')} active={location.pathname === '/app/agents'} onClick={() => navigate('/app/agents')} />
-          <div className="ml-8 pl-3 border-l border-slate-100 my-2 space-y-1">
-             <div className="text-xs text-slate-400 py-1 font-medium tracking-wider">RECENT</div>
-             <div className="text-sm text-slate-600 hover:text-brand-600 cursor-pointer py-1 truncate">Sales Outreach V2</div>
-             <div className="text-sm text-slate-600 hover:text-brand-600 cursor-pointer py-1 truncate">Customer Support</div>
-          </div>
-          <SidebarItem icon={Settings} label={t('nav.settings')} active={location.pathname === '/app/settings'} onClick={() => {}} />
-        </div>
-
-        <div className="p-4 border-t border-slate-50">
-          <div className="flex items-center gap-3 mb-4 px-2">
-            <div className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xs font-bold">JD</div>
-            <div className="flex-1 min-w-0">
-               <div className="text-sm font-medium text-slate-900 truncate">John Doe</div>
-               <div className="text-xs text-slate-500 truncate">john@company.com</div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between">
-             <button onClick={() => navigate('/')} className="p-2 text-slate-400 hover:text-slate-600"><LogOut size={18} /></button>
-          </div>
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="flex-1 overflow-auto relative">
-        <Routes>
-          <Route path="/app" element={<Dashboard lang={lang} />} />
-          <Route path="/app/agents" element={<AgentBuilder lang={lang} />} />
-          <Route path="/app/*" element={<div className="p-10 text-slate-500">Not implemented in demo.</div>} />
-        </Routes>
-      </main>
-    </div>
+    <AppShell lang={lang}>
+      <Routes>
+        <Route path="/app" element={<Dashboard lang={lang} />} />
+        <Route path="/app/dashboard" element={<Dashboard lang={lang} />} />
+        <Route path="/app/agents" element={<AgentsList lang={lang} />} />
+        <Route path="/app/builder/agent-design" element={<AgentBuilder lang={lang} />} />
+        <Route path="/app/billing/upgrade" element={<BillingUpgrade />} />
+        <Route path="/app/settings" element={<div className="p-10 text-slate-500">Settings Demo Placeholder</div>} />
+        <Route path="/app/*" element={<div className="p-10 text-slate-500">Not implemented in demo.</div>} />
+      </Routes>
+    </AppShell>
   );
 };
-
-const SidebarItem = ({ icon: Icon, label, active, onClick }: { icon: any, label: string, active: boolean, onClick: () => void }) => (
-  <button 
-    onClick={onClick}
-    className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${active ? 'bg-brand-50 text-brand-700' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}
-  >
-    <Icon size={18} />
-    {label}
-    {active && <ChevronRight size={14} className="ml-auto opacity-50" />}
-  </button>
-);
 
 export default App;

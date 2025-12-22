@@ -15,6 +15,8 @@ export const translations: Translation = {
   "nav.agents": { ja: "Agents", en: "Agents" },
   "nav.builder": { ja: "Builder", en: "Builder" },
   "nav.settings": { ja: "Settings", en: "Settings" },
+  "nav.recent": { ja: "RECENT", en: "RECENT" },
+  "nav.logout": { ja: "Log out", en: "Log out" },
 
   // Hero
   "hero.title": { ja: "Boost your productivity\nwithout the overwhelm.", en: "Boost your productivity\nwithout the overwhelm." },
@@ -32,14 +34,39 @@ export const translations: Translation = {
   "dash.stat.tasks_completed": { ja: "Tasks Completed", en: "Tasks Completed" },
   "dash.stat.efficiency": { ja: "Efficiency", en: "Efficiency" },
   "dash.stat.savings": { ja: "Est. Savings", en: "Est. Savings" },
+  "dash.create_agent": { ja: "Create New Agent", en: "Create New Agent" },
+
+  // Agents List
+  "agents.title": { ja: "Your Agents", en: "Your Agents" },
+  "agents.subtitle": { ja: "Manage and monitor your automated workforce.", en: "Manage and monitor your automated workforce." },
+  "agents.col.name": { ja: "Name", en: "Name" },
+  "agents.col.status": { ja: "Status", en: "Status" },
+  "agents.col.last_run": { ja: "Last Run", en: "Last Run" },
+  "agents.col.performance": { ja: "Performance", en: "Performance" },
+  "agents.status.active": { ja: "Active", en: "Active" },
+  "agents.status.paused": { ja: "Paused", en: "Paused" },
+  "agents.status.draft": { ja: "Draft", en: "Draft" },
 
   // Builder
   "builder.title": { ja: "Agent Design", en: "Agent Design" },
-  "builder.node.trigger": { ja: "Trigger: New Intercom message", en: "Trigger: New Intercom message" },
-  "builder.node.analyze": { ja: "Action: Check if existing contact?", en: "Action: Check if existing contact?" },
-  "builder.node.action": { ja: "Action: Create CRM record", en: "Action: Create CRM record" },
-  "builder.node.reply": { ja: "Action: Message sales", en: "Action: Message sales" },
-  "builder.success_toast": { ja: "Workflow Generated Successfully", en: "Workflow Generated Successfully" },
+  "builder.save": { ja: "Save", en: "Save" },
+  "builder.test_run": { ja: "Test Run", en: "Test Run" },
+  "builder.saved_toast": { ja: "Changes saved successfully", en: "Changes saved successfully" },
+  "builder.generated_toast": { ja: "Workflow Generated Successfully", en: "Workflow Generated Successfully" },
+  "builder.inspector.title": { ja: "Properties", en: "Properties" },
+  "builder.inspector.node_name": { ja: "Node Name", en: "Node Name" },
+  "builder.inspector.model": { ja: "AI Model", en: "AI Model" },
+  "builder.inspector.delete": { ja: "Delete Node", en: "Delete Node" },
+  "builder.inspector.duplicate": { ja: "Duplicate", en: "Duplicate" },
+  "builder.empty.title": { ja: "Start from scratch or use AI", en: "Start from scratch or use AI" },
+  "builder.empty.subtitle": { ja: "Describe what you want this agent to do, and we'll build the workflow.", en: "Describe what you want this agent to do, and we'll build the workflow." },
+  "builder.empty.cta": { ja: "Generate with AI", en: "Generate with AI" },
+
+  // Billing
+  "billing.upgrade.title": { ja: "Upgrade to Pro", en: "Upgrade to Pro" },
+  "billing.upgrade.subtitle": { ja: "Unlock unlimited agents and advanced logic.", en: "Unlock unlimited agents and advanced logic." },
+  "billing.current_plan": { ja: "Current Plan", en: "Current Plan" },
+  "billing.usage": { ja: "Usage", en: "Usage" },
 
   // Pricing Page
   "pricing.title": { ja: "Plans that scale with your team", en: "Plans that scale with your team" },
