@@ -10,7 +10,7 @@ export const translations: Translation = {
   "nav.pricing": { ja: "Pricing", en: "Pricing" },
   "nav.resources": { ja: "Resources", en: "Resources" },
   "nav.login": { ja: "Log in", en: "Log in" },
-  "nav.getStarted": { ja: "Launch with Keido", en: "Launch with Keido" },
+  "nav.getStarted": { ja: "Launch with Keidra", en: "Launch with Keidra" },
   "nav.dashboard": { ja: "Dashboard", en: "Dashboard" },
   "nav.agents": { ja: "Agents", en: "Agents" },
   "nav.builder": { ja: "Builder", en: "Builder" },
@@ -21,8 +21,8 @@ export const translations: Translation = {
   // Hero
   "hero.title": { ja: "Boost your productivity\nwithout the overwhelm.", en: "Boost your productivity\nwithout the overwhelm." },
   "hero.subtitle": { 
-    ja: "Imagine your tasks running themselves. With Keido, centralize operations, ditch tedious work, and free your team to innovate and grow.", 
-    en: "Imagine your tasks running themselves. With Keido, centralize operations, ditch tedious work, and free your team to innovate and grow." 
+    ja: "Imagine your tasks running themselves. With Keidra, centralize operations, ditch tedious work, and free your team to innovate and grow.", 
+    en: "Imagine your tasks running themselves. With Keidra, centralize operations, ditch tedious work, and free your team to innovate and grow." 
   },
   "hero.cta.primary": { ja: "Experience Effortless Efficiency", en: "Experience Effortless Efficiency" },
   "hero.cta.secondary": { ja: "Learn how", en: "Learn how" },
@@ -95,7 +95,7 @@ export const translations: Translation = {
   "faq.a4": { ja: "Yes, contact sales.", en: "Yes, for our Enterprise customers we offer custom SLAs and dedicated support channels." },
 
   // Auth & Onboarding
-  "auth.sso.title": { ja: "Create your Keido account", en: "Create your Keido account" },
+  "auth.sso.title": { ja: "Create your Keidra account", en: "Create your Keidra account" },
   "auth.sso.subtitle": { ja: "Start automating in seconds. No credit card required.", en: "Start automating in seconds. No credit card required." },
   "auth.sso.google": { ja: "Continue with Google", en: "Continue with Google" },
   "auth.sso.microsoft": { ja: "Continue with Microsoft", en: "Continue with Microsoft" },
@@ -111,10 +111,10 @@ export const translations: Translation = {
   "onboarding.workspace.placeholder": { ja: "e.g. Acme Corp", en: "e.g. Acme Corp" },
   
   "onboarding.integrations.title": { ja: "Connect your stack", en: "Connect your stack" },
-  "onboarding.integrations.subtitle": { ja: "Keido works best with your existing tools. Select at least one.", en: "Keido works best with your existing tools. Select at least one." },
+  "onboarding.integrations.subtitle": { ja: "Keidra works best with your existing tools. Select at least one.", en: "Keidra works best with your existing tools. Select at least one." },
   "onboarding.integrations.skip": { ja: "I'll do this later", en: "I'll do this later" },
 
-  "onboarding.cat.title": { ja: "How will you use Keido?", en: "How will you use Keido?" },
+  "onboarding.cat.title": { ja: "How will you use Keidra?", en: "How will you use Keidra?" },
   "onboarding.cat.subtitle": { ja: "We'll customize your templates based on your role.", en: "We'll customize your templates based on your role." },
   "onboarding.cat.business": { ja: "Business Automation", en: "Business Automation" },
   "onboarding.cat.personal": { ja: "Personal Productivity", en: "Personal Productivity" },
@@ -135,7 +135,7 @@ export const translations: Translation = {
   "flow.other.subtitle": { ja: "We're building for everyone. Tell us more.", en: "We're building for everyone. Tell us more." },
 
   "onboarding.prompt.title": { ja: "What is your first mission?", en: "What is your first mission?" },
-  "onboarding.prompt.subtitle": { ja: "Describe a task you want to automate. Keido will build the agent for you.", en: "Describe a task you want to automate. Keido will build the agent for you." },
+  "onboarding.prompt.subtitle": { ja: "Describe a task you want to automate. Keidra will build the agent for you.", en: "Describe a task you want to automate. Keidra will build the agent for you." },
   "onboarding.prompt.placeholder": { ja: "e.g. When a new lead fills out a Typeform, add them to HubSpot and send a Slack notification...", en: "e.g. When a new lead fills out a Typeform, add them to HubSpot and send a Slack notification..." },
   "onboarding.prompt.button": { ja: "Generate Agent", en: "Generate Agent" },
   "onboarding.prompt.error": { ja: "Please describe your agent to continue.", en: "Please describe your agent to continue." },

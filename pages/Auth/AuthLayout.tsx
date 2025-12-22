@@ -27,7 +27,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ lang }) => {
            <div className="w-8 h-8 rounded-lg bg-brand-500 text-white flex items-center justify-center shadow-lg shadow-brand-500/20">
               <Zap size={18} fill="currentColor" />
            </div>
-           Keido
+           Keidra
         </div>
       </div>
 
@@ -38,7 +38,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ lang }) => {
 
       {/* Footer / Copyright */}
       <div className="absolute bottom-8 text-center w-full text-xs text-slate-400 z-10">
-         © 2024 Keido Inc.
+         © 2024 Keidra Inc.
       </div>
     </div>
   );

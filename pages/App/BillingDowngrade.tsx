@@ -10,7 +10,7 @@ export const BillingDowngrade: React.FC = () => {
   const handleDowngrade = () => {
     // Simulate API call
     setTimeout(() => {
-      localStorage.setItem('keido_plan', 'starter');
+      localStorage.setItem('keidra_plan', 'starter');
       setStep('done');
     }, 800);
   };

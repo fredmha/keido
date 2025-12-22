@@ -18,7 +18,7 @@ export const OnboardingPlan: React.FC<Props> = ({ lang }) => {
 
   const handleContinue = () => {
     // Persist the plan choice for the dashboard
-    localStorage.setItem('keido_plan', selectedPlan);
+    localStorage.setItem('keidra_plan', selectedPlan);
     navigate('/auth/onboarding/workspace');
   };
 

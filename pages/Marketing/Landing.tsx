@@ -43,7 +43,7 @@ export const Landing: React.FC = () => {
               </h1>
               
               <p className="text-lg md:text-xl text-slate-500 mb-10 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                Imagine your tasks running themselves. With Keido, centralize operations,
+                Imagine your tasks running themselves. With Keidra, centralize operations,
                 ditch tedious work, and free your team to innovate and grow.
               </p>
               
@@ -208,9 +208,9 @@ export const Landing: React.FC = () => {
                      <div className="h-12 flex items-center">Scalability</div>
                   </div>
 
-                  {/* Without Keido Column */}
+                  {/* Without Keidra Column */}
                   <div className="flex flex-col gap-6 py-8 md:border-t md:border-white/10 text-center md:text-left">
-                     <div className="text-lg font-bold text-slate-300 mb-4 md:mb-0 text-center">Without Keido</div>
+                     <div className="text-lg font-bold text-slate-300 mb-4 md:mb-0 text-center">Without Keidra</div>
                      {/* Mobile Labels included for responsiveness */}
                      <div className="h-12 flex flex-col md:flex-row items-center justify-center md:justify-start gap-1"><span className="md:hidden text-xs text-slate-500">Task Completion</span><span className="text-slate-300 font-medium">Several days</span></div>
                      <div className="h-12 flex flex-col md:flex-row items-center justify-center md:justify-start gap-1"><span className="md:hidden text-xs text-slate-500">Error Rate</span><span className="text-slate-300 font-medium">Frequent</span></div>
@@ -221,11 +221,11 @@ export const Landing: React.FC = () => {
                      <div className="h-12 flex flex-col md:flex-row items-center justify-center md:justify-start gap-1"><span className="md:hidden text-xs text-slate-500">Scalability</span><span className="text-slate-500"><XIcon size={20}/></span></div>
                   </div>
 
-                  {/* With Keido Column (Highlighted) */}
+                  {/* With Keidra Column (Highlighted) */}
                   <div className="relative bg-[#252238] rounded-2xl border border-brand-500/30 p-8 shadow-2xl shadow-brand-900/50 overflow-hidden">
                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-400 to-accent-500"></div>
                      <div className="flex flex-col gap-6 text-center">
-                        <div className="text-lg font-bold text-white mb-4 md:mb-0 flex items-center justify-center gap-2"><Zap size={16} className="text-brand-400 fill-brand-400"/> With Keido</div>
+                        <div className="text-lg font-bold text-white mb-4 md:mb-0 flex items-center justify-center gap-2"><Zap size={16} className="text-brand-400 fill-brand-400"/> With Keidra</div>
                         <div className="h-12 flex flex-col items-center justify-center"><span className="text-white font-bold">Instantly</span></div>
                         <div className="h-12 flex flex-col items-center justify-center"><span className="text-white font-bold">Near-zero mistakes</span></div>
                         <div className="h-12 flex flex-col items-center justify-center"><span className="text-white font-bold">Real-Time, Centralized</span></div>

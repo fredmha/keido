@@ -179,7 +179,7 @@ export const AppMockFrame: React.FC = () => {
             <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-emerald-400 transition-colors"></div>
         </div>
         <div className="px-3 py-1 bg-slate-50 rounded-md text-[10px] font-bold text-slate-400 uppercase tracking-widest border border-slate-100">
-            Keido Platform
+            Keidra Platform
         </div>
         <div className="w-10"></div> {/* Spacer for center alignment */}
       </div>
@@ -191,7 +191,7 @@ export const AppMockFrame: React.FC = () => {
               <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-brand-500/30">
                  <Zap size={16} fill="currentColor" />
               </div>
-              Keido
+              Keidra
             </div>
             
             <div className="space-y-1 px-3">

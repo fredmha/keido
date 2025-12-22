@@ -24,7 +24,7 @@ export const SSO: React.FC<SSOProps> = ({ lang }) => {
     setTimeout(() => {
       if (preSelectedPlan) {
          // If plan is already chosen, save it and skip the Plan Selection step
-         localStorage.setItem('keido_plan', preSelectedPlan);
+         localStorage.setItem('keidra_plan', preSelectedPlan);
          navigate('/auth/onboarding/workspace');
       } else {
          // Otherwise, default flow goes to Plan Selection

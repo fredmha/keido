@@ -22,7 +22,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children, lang }) => {
   useEffect(() => {
      // Check storage on mount and whenever local storage changes (simulated via listening to custom event or just polling if needed, 
      // but for this demo mount is usually enough. To make it reactive to the downgrade/upgrade actions, we can check on location change)
-     const storedPlan = localStorage.getItem('keido_plan');
+     const storedPlan = localStorage.getItem('keidra_plan');
      if (storedPlan) {
         setCurrentPlan(storedPlan);
      }
@@ -45,7 +45,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children, lang }) => {
              <div className="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-500/20">
                <Zap size={16} fill="currentColor" />
              </div>
-             Keido
+             Keidra
            </div>
         </div>
 
@@ -150,7 +150,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children, lang }) => {
              <div className="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center">
                <Zap size={16} fill="currentColor" />
              </div>
-             Keido
+             Keidra
         </div>
         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-slate-600">
            {mobileMenuOpen ? <X /> : <Menu />}

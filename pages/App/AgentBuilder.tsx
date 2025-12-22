@@ -398,7 +398,7 @@ export const AgentBuilder: React.FC<AgentBuilderProps> = ({ lang }) => {
 // --- Helper Components ---
 
 const NodeCard = ({ id, type, title, subtitle, icon: Icon, x, y, selected, onClick }: any) => {
-   // Styling based on type (Keido palette)
+   // Styling based on type (Keidra palette)
    const styles = {
       trigger: 'bg-amber-50 border-amber-200 text-amber-900',
       logic: 'bg-brand-50 border-brand-200 text-brand-900',

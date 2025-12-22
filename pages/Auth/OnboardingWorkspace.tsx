@@ -46,7 +46,7 @@ export const OnboardingWorkspace: React.FC<Props> = ({ lang }) => {
            {name.trim() && (
              <div className="mt-3 flex items-center gap-2 text-xs text-slate-500 px-1 animate-fade-in">
                 <Globe size={12} />
-                <span>app.keido.com/workspace/<span className="font-semibold text-brand-600">{name.toLowerCase().replace(/[^a-z0-9]/g, '-')}</span></span>
+                <span>app.keidra.com/workspace/<span className="font-semibold text-brand-600">{name.toLowerCase().replace(/[^a-z0-9]/g, '-')}</span></span>
              </div>
            )}
         </div>
