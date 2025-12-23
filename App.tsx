@@ -87,28 +87,8 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
                 className="flex items-center gap-2.5 text-xl font-display font-bold text-slate-900 cursor-pointer tracking-tight"
                 onClick={() => navigate('/')}
               >
-                {/* Enhanced Logo: Modern K with geometric elements */}
-                <div className="relative w-11 h-11 flex items-center justify-center">
-                  <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute">
-                    <defs>
-                      <linearGradient id="logoGradientNav" x1="0" y1="0" x2="44" y2="44">
-                        <stop offset="0%" stopColor="#0055FF" />
-                        <stop offset="100%" stopColor="#3385FF" />
-                      </linearGradient>
-                      <filter id="shadow">
-                        <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.3"/>
-                      </filter>
-                    </defs>
-                    {/* Rounded square background */}
-                    <rect x="2" y="2" width="40" height="40" rx="10" fill="url(#logoGradientNav)" filter="url(#shadow)"/>
-                    {/* Bold K letter */}
-                    <path d="M14 10 L14 34 M14 22 L24 10 M14 22 L24 34" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    {/* Decorative elements - connected dots */}
-                    <circle cx="30" cy="12" r="2.5" fill="white" opacity="0.9"/>
-                    <circle cx="32" cy="32" r="2.5" fill="white" opacity="0.9"/>
-                    {/* Connecting line */}
-                    <path d="M30 12 L32 32" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
-                  </svg>
+                <div className="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center shadow-md shadow-brand-500/20">
+                  <Zap size={16} fill="currentColor" />
                 </div>
                 <span className="font-display text-2xl font-bold tracking-tight">Keidra</span>
               </div>

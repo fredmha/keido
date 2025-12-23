@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { 
   Play, Save, Plus, ArrowLeft, Mail, MessageSquare, Database, Bot, 
-  Trash2, Copy, X, CheckCircle2, ChevronDown, Zap, LayoutTemplate, Link2 
+  Trash2, Copy, X, CheckCircle2, ChevronDown, Zap, LayoutTemplate, Link2,
+  Send, Calendar, FileText, DollarSign, UserCheck, AlertCircle, CheckCircle, Tag
 } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { getTranslation } from '../../i18n';
@@ -44,14 +45,124 @@ export const AgentBuilder: React.FC<AgentBuilderProps> = ({ lang }) => {
     }
   `;
   
-  // Initial Nodes Data
-  const initialNodes: NodeType[] = [
-    { id: 'node-1', type: 'trigger', title: 'New Intercom message', subtitle: 'trigger', icon: LayoutTemplate, x: 400, y: 40 },
-    { id: 'node-2', type: 'logic', title: 'Check if existing contact?', subtitle: 'branch-1', icon: Bot, x: 400, y: 180, parentId: ['node-1'] },
-    // Condition is visual-only in this demo data structure, handled separately or as a label
-    { id: 'node-3', type: 'action', title: 'Message sales', subtitle: '#new-leads', icon: MessageSquare, x: 220, y: 400, parentId: ['node-2'] },
-    { id: 'node-4', type: 'action', title: 'Create CRM record', subtitle: 'notion-2', icon: Database, x: 580, y: 400, parentId: ['node-2'] },
+  // Workflow Templates with Varied Layouts
+  
+  // 1. Simple Linear (3 nodes) - All green actions in a straight line
+  const getSimpleLinearWorkflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'New form submission', subtitle: 'trigger', icon: FileText, x: 400, y: 40 },
+    { id: 'node-2', type: 'action', title: 'Send confirmation email', subtitle: 'email-1', icon: Mail, x: 400, y: 200, parentId: ['node-1'] },
+    { id: 'node-3', type: 'action', title: 'Add to database', subtitle: 'db-2', icon: Database, x: 400, y: 360, parentId: ['node-2'] },
   ];
+
+  // 2. Branched Sales (4 nodes) - Classic 2-way branch
+  const getBranchedSalesWorkflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'Typeform submission', subtitle: 'trigger', icon: FileText, x: 400, y: 40 },
+    { id: 'node-2', type: 'logic', title: 'Check lead score', subtitle: 'branch-1', icon: Bot, x: 400, y: 180, parentId: ['node-1'] },
+    { id: 'node-3', type: 'action', title: 'Notify sales team', subtitle: 'slack-1', icon: MessageSquare, x: 180, y: 400, parentId: ['node-2'] },
+    { id: 'node-4', type: 'action', title: 'Add to CRM', subtitle: 'hubspot-2', icon: Database, x: 620, y: 400, parentId: ['node-2'] },
+  ];
+
+  // 3. 3-Way Split (5 nodes) - One trigger → logic → three parallel actions
+  const getThreeWaySplitWorkflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'New customer signup', subtitle: 'trigger', icon: UserCheck, x: 400, y: 40 },
+    { id: 'node-2', type: 'logic', title: 'Check plan type', subtitle: 'branch-1', icon: Bot, x: 400, y: 180, parentId: ['node-1'] },
+    { id: 'node-3', type: 'action', title: 'Schedule onboarding', subtitle: 'calendly-1', icon: Calendar, x: 100, y: 400, parentId: ['node-2'] },
+    { id: 'node-4', type: 'action', title: 'Send welcome email', subtitle: 'email-2', icon: Mail, x: 400, y: 400, parentId: ['node-2'] },
+    { id: 'node-5', type: 'action', title: 'Create account', subtitle: 'db-3', icon: Database, x: 700, y: 400, parentId: ['node-2'] },
+  ];
+
+  // 4. Deep Chain (5 nodes) - Sequential with logic in middle
+  const getDeepChainWorkflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'Invoice received', subtitle: 'trigger', icon: FileText, x: 400, y: 40 },
+    { id: 'node-2', type: 'action', title: 'Extract details', subtitle: 'ai-1', icon: Bot, x: 400, y: 180, parentId: ['node-1'] },
+    { id: 'node-3', type: 'logic', title: 'Check amount', subtitle: 'branch-1', icon: DollarSign, x: 400, y: 320, parentId: ['node-2'] },
+    { id: 'node-4', type: 'action', title: 'Approve payment', subtitle: 'quickbooks-1', icon: CheckCircle, x: 400, y: 460, parentId: ['node-3'] },
+    { id: 'node-5', type: 'action', title: 'Send receipt', subtitle: 'email-2', icon: Send, x: 400, y: 600, parentId: ['node-4'] },
+  ];
+
+  // 5. Multi-Level (6 nodes) - Branch with sub-chain
+  const getMultiLevelWorkflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'Support ticket created', subtitle: 'trigger', icon: AlertCircle, x: 400, y: 40 },
+    { id: 'node-2', type: 'logic', title: 'Check priority', subtitle: 'branch-1', icon: Bot, x: 400, y: 180, parentId: ['node-1'] },
+    { id: 'node-3', type: 'action', title: 'Assign to team', subtitle: 'zendesk-1', icon: UserCheck, x: 180, y: 360, parentId: ['node-2'] },
+    { id: 'node-4', type: 'action', title: 'Send notification', subtitle: 'slack-2', icon: MessageSquare, x: 180, y: 520, parentId: ['node-3'] },
+    { id: 'node-5', type: 'action', title: 'Create follow-up', subtitle: 'asana-3', icon: CheckCircle, x: 620, y: 360, parentId: ['node-2'] },
+    { id: 'node-6', type: 'action', title: 'Log in system', subtitle: 'db-4', icon: Database, x: 620, y: 520, parentId: ['node-5'] },
+  ];
+
+  // 6. Complex Parallel (7 nodes) - Multiple action chains
+  const getComplexParallelWorkflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'Landing page visit', subtitle: 'trigger', icon: LayoutTemplate, x: 400, y: 40 },
+    { id: 'node-2', type: 'logic', title: 'Analyze traffic source', subtitle: 'branch-1', icon: Bot, x: 400, y: 180, parentId: ['node-1'] },
+    { id: 'node-3', type: 'action', title: 'Add to campaign', subtitle: 'mailchimp-1', icon: Tag, x: 100, y: 360, parentId: ['node-2'] },
+    { id: 'node-4', type: 'action', title: 'Send welcome email', subtitle: 'email-2', icon: Send, x: 100, y: 520, parentId: ['node-3'] },
+    { id: 'node-5', type: 'action', title: 'Track conversion', subtitle: 'analytics-3', icon: Zap, x: 400, y: 360, parentId: ['node-2'] },
+    { id: 'node-6', type: 'action', title: 'Update CRM', subtitle: 'hubspot-4', icon: Database, x: 400, y: 520, parentId: ['node-5'] },
+    { id: 'node-7', type: 'action', title: 'Create task', subtitle: 'asana-5', icon: CheckCircle, x: 700, y: 360, parentId: ['node-2'] },
+  ];
+
+  // 7. Action-Heavy (4 nodes) - All green, linear
+  const getActionHeavyWorkflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'New email received', subtitle: 'trigger', icon: Mail, x: 400, y: 40 },
+    { id: 'node-2', type: 'action', title: 'Analyze content', subtitle: 'ai-1', icon: Bot, x: 400, y: 200, parentId: ['node-1'] },
+    { id: 'node-3', type: 'action', title: 'Categorize email', subtitle: 'gmail-2', icon: Tag, x: 400, y: 360, parentId: ['node-2'] },
+    { id: 'node-4', type: 'action', title: 'Auto-respond', subtitle: 'email-3', icon: Send, x: 400, y: 520, parentId: ['node-3'] },
+  ];
+
+  // 8. Logic-Rich (5 nodes) - Alternating purple/green
+  const getLogicRichWorkflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'Payment processed', subtitle: 'trigger', icon: DollarSign, x: 400, y: 40 },
+    { id: 'node-2', type: 'logic', title: 'Verify transaction', subtitle: 'branch-1', icon: Bot, x: 400, y: 180, parentId: ['node-1'] },
+    { id: 'node-3', type: 'action', title: 'Update order status', subtitle: 'db-1', icon: Database, x: 400, y: 320, parentId: ['node-2'] },
+    { id: 'node-4', type: 'logic', title: 'Check delivery date', subtitle: 'branch-2', icon: Calendar, x: 400, y: 460, parentId: ['node-3'] },
+    { id: 'node-5', type: 'action', title: 'Send confirmation', subtitle: 'email-2', icon: Mail, x: 400, y: 600, parentId: ['node-4'] },
+  ];
+
+  // 9. Sales Outreach V2 - Specific workflow for Sales Outreach
+  const getSalesOutreachV2Workflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'New lead captured', subtitle: 'trigger', icon: UserCheck, x: 400, y: 40 },
+    { id: 'node-2', type: 'logic', title: 'Qualify lead score', subtitle: 'branch-1', icon: Bot, x: 400, y: 180, parentId: ['node-1'] },
+    { id: 'node-3', type: 'action', title: 'Send outreach email', subtitle: 'email-1', icon: Send, x: 150, y: 360, parentId: ['node-2'] },
+    { id: 'node-4', type: 'action', title: 'Add to CRM', subtitle: 'hubspot-2', icon: Database, x: 400, y: 360, parentId: ['node-2'] },
+    { id: 'node-5', type: 'action', title: 'Notify sales team', subtitle: 'slack-3', icon: MessageSquare, x: 650, y: 360, parentId: ['node-2'] },
+    { id: 'node-6', type: 'action', title: 'Schedule follow-up', subtitle: 'calendly-4', icon: Calendar, x: 150, y: 520, parentId: ['node-3'] },
+  ];
+
+  // 10. Customer Support - Specific workflow for Customer Support
+  const getCustomerSupportWorkflow = (): NodeType[] => [
+    { id: 'node-1', type: 'trigger', title: 'Support ticket created', subtitle: 'trigger', icon: AlertCircle, x: 400, y: 40 },
+    { id: 'node-2', type: 'logic', title: 'Check ticket priority', subtitle: 'branch-1', icon: Bot, x: 400, y: 180, parentId: ['node-1'] },
+    { id: 'node-3', type: 'action', title: 'Assign to agent', subtitle: 'zendesk-1', icon: UserCheck, x: 150, y: 360, parentId: ['node-2'] },
+    { id: 'node-4', type: 'action', title: 'Send auto-response', subtitle: 'email-2', icon: Mail, x: 400, y: 360, parentId: ['node-2'] },
+    { id: 'node-5', type: 'action', title: 'Create follow-up task', subtitle: 'asana-3', icon: CheckCircle, x: 650, y: 360, parentId: ['node-2'] },
+    { id: 'node-6', type: 'action', title: 'Log in system', subtitle: 'db-4', icon: Database, x: 150, y: 520, parentId: ['node-3'] },
+    { id: 'node-7', type: 'action', title: 'Send notification', subtitle: 'slack-5', icon: MessageSquare, x: 400, y: 520, parentId: ['node-4'] },
+  ];
+
+  // Get workflow template based on URL parameter or random selection
+  const getWorkflowTemplate = (workflowParam?: string | null): NodeType[] => {
+    // If specific workflow is requested, return that
+    if (workflowParam === 'sales-outreach-v2') {
+      return getSalesOutreachV2Workflow();
+    }
+    if (workflowParam === 'customer-support') {
+      return getCustomerSupportWorkflow();
+    }
+    
+    // Otherwise, randomly select from all templates
+    const templates = [
+      getSimpleLinearWorkflow,        // 3 nodes - linear
+      getBranchedSalesWorkflow,       // 4 nodes - 2-way branch
+      getThreeWaySplitWorkflow,       // 5 nodes - 3-way split
+      getDeepChainWorkflow,           // 5 nodes - deep chain
+      getMultiLevelWorkflow,          // 6 nodes - multi-level
+      getComplexParallelWorkflow,     // 7 nodes - complex parallel
+      getActionHeavyWorkflow,         // 4 nodes - action-heavy
+      getLogicRichWorkflow,           // 5 nodes - logic-rich
+    ];
+    const randomTemplate = templates[Math.floor(Math.random() * templates.length)];
+    return randomTemplate();
+  };
 
   // States
   const [viewState, setViewState] = useState<'empty' | 'generated'>(
@@ -59,7 +170,7 @@ export const AgentBuilder: React.FC<AgentBuilderProps> = ({ lang }) => {
     searchParams.get('state') === 'empty' ? 'empty' : 'generated'
   );
   
-  const [nodes, setNodes] = useState<NodeType[]>(initialNodes);
+  const [nodes, setNodes] = useState<NodeType[]>(() => getWorkflowTemplate(searchParams.get('workflow')));
   const [selectedNode, setSelectedNode] = useState<string | null>(null);
   const [showToast, setShowToast] = useState<{message: string, type: 'success' | 'error'} | null>(null);
   const [showTestModal, setShowTestModal] = useState(false);
@@ -76,12 +187,13 @@ export const AgentBuilder: React.FC<AgentBuilderProps> = ({ lang }) => {
   // Sync URL params
   useEffect(() => {
     const state = searchParams.get('state');
+    const workflow = searchParams.get('workflow');
     if (state === 'generated' || state === 'empty') {
       setViewState(state);
       if (state === 'empty') {
          setNodes([]);
       } else {
-         setNodes(initialNodes);
+         setNodes(getWorkflowTemplate(workflow));
       }
     }
   }, [searchParams]);
@@ -99,16 +211,18 @@ export const AgentBuilder: React.FC<AgentBuilderProps> = ({ lang }) => {
       setShowToast({ message: "Run completed successfully", type: 'success' });
       if (viewState === 'empty') {
          setViewState('generated');
-         setSearchParams({ state: 'generated' });
-         setNodes(initialNodes);
+         const workflow = searchParams.get('workflow');
+         setSearchParams({ state: 'generated', ...(workflow ? { workflow } : {}) });
+         setNodes(getWorkflowTemplate(workflow));
       }
     }, 2500);
   };
 
   const handleGenerate = () => {
      setViewState('generated');
-     setSearchParams({ state: 'generated' });
-     setNodes(initialNodes);
+     const workflow = searchParams.get('workflow');
+     setSearchParams({ state: 'generated', ...(workflow ? { workflow } : {}) });
+     setNodes(getWorkflowTemplate(workflow));
      setShowToast({ message: t('builder.generated_toast'), type: 'success' });
   };
 
@@ -226,33 +340,40 @@ export const AgentBuilder: React.FC<AgentBuilderProps> = ({ lang }) => {
                      </linearGradient>
                   </defs>
                   
-                  {/* Base Structure Connectors (Static for the demo core) */}
-                  {nodes.some(n => n.id === 'node-1') && nodes.some(n => n.id === 'node-2') && (
-                     <path d="M 400 80 L 400 180" stroke="#cbd5e1" strokeWidth="2" fill="none" className="animate-flow-line" strokeDasharray="12 12" />
-                  )}
-                  {nodes.some(n => n.id === 'node-2') && (
-                     <path d="M 400 240 L 400 300" stroke="#cbd5e1" strokeWidth="2" fill="none" className="animate-flow-line" strokeDasharray="12 12" />
-                  )}
-                  {nodes.some(n => n.id === 'node-3') && (
-                     <path d="M 400 320 L 400 350 L 220 350 L 220 400" stroke="#cbd5e1" strokeWidth="2" fill="none" strokeLinejoin="round" className="animate-flow-line" strokeDasharray="12 12" />
-                  )}
-                  {nodes.some(n => n.id === 'node-4') && (
-                     <path d="M 400 320 L 400 350 L 580 350 L 580 400" stroke="#cbd5e1" strokeWidth="2" fill="none" strokeLinejoin="round" className="animate-flow-line" strokeDasharray="12 12" />
-                  )}
+                  {/* Dynamic Connectors - Calculate paths based on node positions and parent relationships */}
+                  {nodes.map(node => {
+                     if (!node.parentId || node.parentId.length === 0) return null;
+                     
+                     return node.parentId.map(parentId => {
+                        const parent = nodes.find(p => p.id === parentId);
+                        if (!parent) return null;
 
-                  {/* Dynamic Connectors for Added Nodes */}
-                  {nodes.filter(n => parseInt(n.id.split('-')[1]) > 4).map(node => {
-                     // Find parent coordinates
-                     const parents = nodes.filter(p => node.parentId?.includes(p.id));
-                     return parents.map(parent => {
                         // Calculate entry/exit points
+                        // Node cards are approximately 80px tall (40px top offset + 40px bottom offset)
                         const startX = parent.x;
-                        const startY = parent.y + 40; // Bottom of parent (roughly)
+                        const startY = parent.y + 80; // Bottom of parent node
                         const endX = node.x;
-                        const endY = node.y - 40; // Top of node
+                        const endY = node.y; // Top of child node
 
-                        // Simple Bezier or Elbow
-                        const path = `M ${startX} ${startY} C ${startX} ${startY + 50}, ${endX} ${endY - 50}, ${endX} ${endY}`;
+                        // If nodes are aligned vertically (same X), use straight line
+                        if (Math.abs(startX - endX) < 10) {
+                           const path = `M ${startX} ${startY} L ${endX} ${endY}`;
+                           return (
+                              <path 
+                                 key={`${parent.id}-${node.id}`}
+                                 d={path} 
+                                 stroke="#cbd5e1" 
+                                 strokeWidth="2" 
+                                 fill="none" 
+                                 className="animate-flow-line" 
+                                 strokeDasharray="12 12"
+                              />
+                           );
+                        }
+
+                        // For horizontal branches, use elbow connector
+                        const midY = startY + (endY - startY) / 2;
+                        const path = `M ${startX} ${startY} L ${startX} ${midY} L ${endX} ${midY} L ${endX} ${endY}`;
                         
                         return (
                            <path 
@@ -267,7 +388,7 @@ export const AgentBuilder: React.FC<AgentBuilderProps> = ({ lang }) => {
                            />
                         );
                      });
-                  })}
+                  }).flat().filter(Boolean)}
                </svg>
 
                {/* NODES RENDER */}
@@ -280,15 +401,40 @@ export const AgentBuilder: React.FC<AgentBuilderProps> = ({ lang }) => {
                   />
                ))}
 
-               {/* Condition Chip (Static for demo) */}
-               {nodes.some(n => n.id === 'node-3') && (
-                 <div 
-                     className="absolute top-[300px] left-1/2 -translate-x-1/2 bg-white border border-slate-200 px-3 py-1.5 rounded-full shadow-sm text-xs font-bold text-slate-500 z-10 hover:border-brand-300 hover:text-brand-600 cursor-pointer transition-colors"
-                     onClick={(e) => { e.stopPropagation(); setSelectedNode('cond-1'); }}
-                  >
-                     Score {'>'} 80?
-                  </div>
-               )}
+               {/* Condition Chips - Dynamic based on logic nodes */}
+               {nodes.filter(n => n.type === 'logic').map(logicNode => {
+                  const children = nodes.filter(child => child.parentId?.includes(logicNode.id));
+                  if (children.length === 0) return null;
+                  
+                  // Position chip between logic node and its children
+                  const logicBottom = logicNode.y + 80;
+                  const firstChildTop = Math.min(...children.map(c => c.y));
+                  const chipY = logicBottom + (firstChildTop - logicBottom) / 2;
+                  
+                  // Determine condition text based on workflow type
+                  const conditionText = logicNode.title.includes('score') ? 'Score > 80?' :
+                                      logicNode.title.includes('urgency') ? 'High urgency?' :
+                                      logicNode.title.includes('priority') ? 'Priority > 5?' :
+                                      logicNode.title.includes('amount') ? 'Amount > $100?' :
+                                      logicNode.title.includes('source') ? 'Source = paid?' :
+                                      logicNode.title.includes('plan') ? 'Plan = Pro?' :
+                                      logicNode.title.includes('type') ? 'Type = Premium?' :
+                                      logicNode.title.includes('transaction') ? 'Valid?' :
+                                      logicNode.title.includes('delivery') ? 'On time?' :
+                                      logicNode.title.includes('traffic') ? 'Source = organic?' :
+                                      'Condition met?';
+                  
+                  return (
+                     <div 
+                        key={`cond-${logicNode.id}`}
+                        className="absolute left-1/2 -translate-x-1/2 bg-white border border-slate-200 px-3 py-1.5 rounded-full shadow-sm text-xs font-bold text-slate-500 z-10 hover:border-brand-300 hover:text-brand-600 cursor-pointer transition-colors"
+                        style={{ top: chipY }}
+                        onClick={(e) => { e.stopPropagation(); setSelectedNode(`cond-${logicNode.id}`); }}
+                     >
+                        {conditionText}
+                     </div>
+                  );
+               })}
 
                {/* ADD BUTTON */}
                <div 

@@ -73,8 +73,12 @@ export const Landing: React.FC = () => {
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-slate-900 mb-6 md:mb-8 leading-[1.1] animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                Built for enterprise scale<br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>and trust.
+                Built for enterprise
+                <span className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-white rounded-2xl shadow-lg shadow-brand-100 border border-slate-100 mx-2 align-middle text-brand-500 transform hover:scale-105 transition-transform duration-200">
+                  <Zap className="w-7 h-7 md:w-9 md:h-9 text-brand-500" fill="currentColor" />
+                </span>
+                scale<br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>and trust
               </h1>
               
               <p className="text-base sm:text-lg md:text-xl text-slate-600 mb-8 md:mb-10 leading-relaxed animate-fade-in-up px-2 sm:px-0" style={{ animationDelay: '0.2s' }}>
@@ -232,11 +236,12 @@ export const Landing: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. INTEGRATIONS SECTION */}
+      {/* 3. INTEGRATIONS & CASE STUDIES SECTION */}
       <section className="py-16 md:py-24 bg-white relative overflow-hidden border-t border-slate-100">
-         <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-20">
-               <div className="lg:w-5/12 w-full">
+         <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+            <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-start">
+               {/* Left Column: Integrations */}
+               <div className="w-full">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-xs font-bold tracking-wide uppercase mb-4 md:mb-6">
                     <Zap size={14} /> Seamless Integrations
                   </div>
@@ -249,151 +254,149 @@ export const Landing: React.FC = () => {
                   <Button variant="gradient" size="lg" className="shadow-lg shadow-brand-500/20 w-full sm:w-auto" onClick={() => navigate('/auth/sso')}>
                      Explore integrations
                   </Button>
-               </div>
 
-               <div className="lg:w-7/12 relative">
-                  {/* Grid Background Fade */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white z-10 pointer-events-none" />
-                  
-                  {/* Icons Grid */}
-                  <div className="grid grid-cols-4 gap-4 md:gap-6 opacity-80">
-                     {[
-                        { icon: Slack, color: "text-rose-500", bg: "bg-rose-50" },
-                        { icon: Trello, color: "text-blue-500", bg: "bg-blue-50" },
-                        { icon: Github, color: "text-slate-700", bg: "bg-slate-100" },
-                        { icon: Figma, color: "text-purple-500", bg: "bg-purple-50" },
-                        { icon: CreditCard, color: "text-emerald-500", bg: "bg-emerald-50" },
-                        { icon: HardDrive, color: "text-orange-500", bg: "bg-orange-50" },
-                        { icon: Smartphone, color: "text-cyan-500", bg: "bg-cyan-50" },
-                        { icon: Globe, color: "text-indigo-500", bg: "bg-indigo-50" },
-                     ].map((item, i) => (
-                        <div key={i} className={`aspect-square rounded-2xl ${item.bg} flex items-center justify-center transform transition-transform hover:scale-110 shadow-sm`}>
-                           <item.icon className={`w-8 h-8 ${item.color}`} />
-                        </div>
-                     ))}
+                  <div className="mt-8 md:mt-12 relative">
+                     {/* Grid Background Fade */}
+                     <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white z-10 pointer-events-none" />
                      
-                     {/* Center Rocket (Absolute) */}
-                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white rounded-full shadow-2xl flex items-center justify-center z-20 border-4 border-slate-50">
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center text-white shadow-inner">
-                           <Zap size={40} fill="currentColor" />
+                     {/* Icons Grid */}
+                     <div className="grid grid-cols-4 gap-4 md:gap-6 opacity-80">
+                        {[
+                           { icon: Slack, color: "text-rose-500", bg: "bg-rose-50" },
+                           { icon: Trello, color: "text-blue-500", bg: "bg-blue-50" },
+                           { icon: Github, color: "text-slate-700", bg: "bg-slate-100" },
+                           { icon: Figma, color: "text-purple-500", bg: "bg-purple-50" },
+                           { icon: CreditCard, color: "text-emerald-500", bg: "bg-emerald-50" },
+                           { icon: HardDrive, color: "text-orange-500", bg: "bg-orange-50" },
+                           { icon: Smartphone, color: "text-cyan-500", bg: "bg-cyan-50" },
+                           { icon: Globe, color: "text-indigo-500", bg: "bg-indigo-50" },
+                        ].map((item, i) => (
+                           <div key={i} className={`aspect-square rounded-2xl ${item.bg} flex items-center justify-center transform transition-transform hover:scale-110 shadow-sm`}>
+                              <item.icon className={`w-8 h-8 ${item.color}`} />
+                           </div>
+                        ))}
+                        
+                        {/* Center Rocket (Absolute) */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white rounded-full shadow-2xl flex items-center justify-center z-20 border-4 border-slate-50">
+                           <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center text-white shadow-inner">
+                              <Zap size={40} fill="currentColor" />
+                           </div>
                         </div>
                      </div>
                   </div>
                </div>
+
+               {/* Right Column: Case Studies */}
+               <div className="w-full">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12">
+                     <div className="mb-6 md:mb-0">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 mb-3 md:mb-4">
+                           Case Studies
+                        </h2>
+                        <p className="text-base sm:text-lg text-slate-600 max-w-2xl">
+                           See how real teams are transforming their sales and operations. From startups to enterprises, discover the results our customers are achieving.
+                        </p>
+                     </div>
+                     <Button variant="outline" size="lg" className="whitespace-nowrap w-full sm:w-auto mt-4 md:mt-0">
+                        See all case studies <ArrowRight size={16} className="ml-2" />
+                     </Button>
+                  </div>
+
+                  {/* Case Study Carousel */}
+                  <div className="relative">
+                     <div className="overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-xl">
+                        <div 
+                           className="flex transition-transform duration-500 ease-in-out"
+                           style={{ transform: `translateX(-${caseStudyIndex * 100}%)` }}
+                        >
+                           {caseStudies.map((study, idx) => (
+                              <div key={idx} className="min-w-full flex flex-col md:flex-row">
+                                 {/* Left: Image */}
+                                 <div className="md:w-2/5 bg-gradient-to-br from-brand-50 to-white p-6 md:p-8 lg:p-12 flex items-center justify-center relative overflow-hidden">
+                                    <div className="relative w-full max-w-[300px] md:max-w-[350px] aspect-[3/4]">
+                                       <img 
+                                          src={study.image} 
+                                          alt={`${study.name}, ${study.title}`}
+                                          className="w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white"
+                                          loading="lazy"
+                                          onError={(e) => {
+                                             // Fallback if image doesn't load
+                                             const target = e.target as HTMLImageElement;
+                                             target.style.display = 'none';
+                                          }}
+                                       />
+                                       <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-2xl pointer-events-none"></div>
+                                    </div>
+                                 </div>
+
+                                 {/* Right: Content */}
+                                 <div className="md:w-3/5 p-6 md:p-8 lg:p-12 flex flex-col justify-center">
+                                    <div className="mb-4 md:mb-6">
+                                       <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-slate-900 mb-1 md:mb-2">
+                                          {study.name}
+                                       </h3>
+                                       <p className="text-sm sm:text-base text-slate-500 font-medium">{study.title}</p>
+                                    </div>
+
+                                    <blockquote className="text-base sm:text-lg md:text-xl text-slate-700 leading-relaxed mb-6 md:mb-8 italic">
+                                       "{study.quote}"
+                                    </blockquote>
+
+                                    <div className="flex flex-wrap gap-4 md:gap-6 mb-6">
+                                       {study.metrics.map((metric, mIdx) => (
+                                          <div key={mIdx} className="flex flex-col">
+                                             <span className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brand-600 mb-1">
+                                                {metric.label}
+                                             </span>
+                                             <span className="text-xs sm:text-sm text-slate-600">{metric.desc}</span>
+                                          </div>
+                                       ))}
+                                    </div>
+
+                                    <Button variant="secondary" size="md" className="self-start w-full sm:w-auto">
+                                       See {study.name.split(' ')[0]}'s Story <ArrowRight size={16} className="ml-2" />
+                                    </Button>
+                                 </div>
+                              </div>
+                           ))}
+                        </div>
+                     </div>
+
+                     {/* Navigation Dots */}
+                     <div className="flex justify-center items-center gap-2 mt-8">
+                        {caseStudies.map((_, idx) => (
+                           <button
+                              key={idx}
+                              onClick={() => setCaseStudyIndex(idx)}
+                              className={`w-2 h-2 rounded-full transition-all ${
+                                 idx === caseStudyIndex 
+                                    ? 'bg-brand-500 w-8' 
+                                    : 'bg-slate-300 hover:bg-slate-400'
+                              }`}
+                              aria-label={`Go to case study ${idx + 1}`}
+                           />
+                        ))}
+                     </div>
+
+                     {/* Navigation Arrows */}
+                     <button
+                        onClick={() => setCaseStudyIndex((prev) => (prev === 0 ? caseStudies.length - 1 : prev - 1))}
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border border-slate-200 shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors z-10"
+                        aria-label="Previous case study"
+                     >
+                        <ChevronLeft size={18} className="text-slate-600" />
+                     </button>
+                     <button
+                        onClick={() => setCaseStudyIndex((prev) => (prev === caseStudies.length - 1 ? 0 : prev + 1))}
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border border-slate-200 shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors z-10"
+                        aria-label="Next case study"
+                     >
+                        <ChevronRight size={18} className="text-slate-600" />
+                     </button>
+                  </div>
+               </div>
             </div>
          </div>
-      </section>
-
-      {/* 4. CASE STUDIES SECTION */}
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12">
-            <div className="mb-6 md:mb-0">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-slate-900 mb-3 md:mb-4">
-                Case Studies
-              </h2>
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl">
-                See how real teams are transforming their sales and operations. From startups to enterprises, discover the results our customers are achieving.
-              </p>
-            </div>
-            <Button variant="outline" size="lg" className="whitespace-nowrap w-full sm:w-auto mt-4 md:mt-0">
-              See all case studies <ArrowRight size={16} className="ml-2" />
-            </Button>
-          </div>
-
-          {/* Case Study Carousel */}
-          <div className="relative">
-            <div className="overflow-hidden rounded-3xl bg-white border border-slate-100 shadow-xl">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${caseStudyIndex * 100}%)` }}
-              >
-                {caseStudies.map((study, idx) => (
-                  <div key={idx} className="min-w-full flex flex-col md:flex-row">
-                    {/* Left: Image */}
-                    <div className="md:w-2/5 bg-gradient-to-br from-brand-50 to-white p-6 md:p-8 lg:p-12 flex items-center justify-center relative overflow-hidden">
-                      <div className="relative w-full max-w-[300px] md:max-w-[350px] aspect-[3/4]">
-                        <img 
-                          src={study.image} 
-                          alt={`${study.name}, ${study.title}`}
-                          className="w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white"
-                          loading="lazy"
-                          onError={(e) => {
-                            // Fallback if image doesn't load
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-2xl pointer-events-none"></div>
-                      </div>
-                    </div>
-
-                    {/* Right: Content */}
-                    <div className="md:w-3/5 p-6 md:p-8 lg:p-12 flex flex-col justify-center">
-                      <div className="mb-4 md:mb-6">
-                        <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-slate-900 mb-1 md:mb-2">
-                          {study.name}
-                        </h3>
-                        <p className="text-sm sm:text-base text-slate-500 font-medium">{study.title}</p>
-                      </div>
-
-                      <blockquote className="text-base sm:text-lg md:text-xl text-slate-700 leading-relaxed mb-6 md:mb-8 italic">
-                        "{study.quote}"
-                      </blockquote>
-
-                      <div className="flex flex-wrap gap-4 md:gap-6 mb-6">
-                        {study.metrics.map((metric, mIdx) => (
-                          <div key={mIdx} className="flex flex-col">
-                            <span className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brand-600 mb-1">
-                              {metric.label}
-                            </span>
-                            <span className="text-xs sm:text-sm text-slate-600">{metric.desc}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <Button variant="secondary" size="md" className="self-start w-full sm:w-auto">
-                        See {study.name.split(' ')[0]}'s Story <ArrowRight size={16} className="ml-2" />
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Navigation Dots */}
-            <div className="flex justify-center items-center gap-2 mt-8">
-              {caseStudies.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCaseStudyIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    idx === caseStudyIndex 
-                      ? 'bg-brand-500 w-8' 
-                      : 'bg-slate-300 hover:bg-slate-400'
-                  }`}
-                  aria-label={`Go to case study ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Navigation Arrows */}
-            <button
-              onClick={() => setCaseStudyIndex((prev) => (prev === 0 ? caseStudies.length - 1 : prev - 1))}
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border border-slate-200 shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors z-10"
-              aria-label="Previous case study"
-            >
-              <ChevronLeft size={18} className="text-slate-600" />
-            </button>
-            <button
-              onClick={() => setCaseStudyIndex((prev) => (prev === caseStudies.length - 1 ? 0 : prev + 1))}
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border border-slate-200 shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors z-10"
-              aria-label="Next case study"
-            >
-              <ChevronRight size={18} className="text-slate-600" />
-            </button>
-          </div>
-        </div>
       </section>
 
       {/* 5. COMPARISON SECTION (DARK MODE) */}

@@ -80,8 +80,8 @@ export const AppShell: React.FC<AppShellProps> = ({ children, lang }) => {
             {agentsExpanded && (
               <div className="ml-4 pl-4 border-l border-slate-100 my-2 space-y-1 animate-fade-in">
                  <div className="text-[10px] text-slate-400 py-2 font-bold tracking-widest uppercase px-2">{t('nav.recent')}</div>
-                 <SubNavItem label="Sales Outreach V2" onClick={() => navigate('/app/builder/agent-design')} />
-                 <SubNavItem label="Customer Support" onClick={() => navigate('/app/builder/agent-design')} />
+                 <SubNavItem label="Sales Outreach V2" onClick={() => navigate('/app/builder/agent-design?workflow=sales-outreach-v2&state=generated')} />
+                 <SubNavItem label="Customer Support" onClick={() => navigate('/app/builder/agent-design?workflow=customer-support&state=generated')} />
               </div>
             )}
           </div>
