@@ -92,8 +92,8 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
                   <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute">
                     <defs>
                       <linearGradient id="logoGradientNav" x1="0" y1="0" x2="44" y2="44">
-                        <stop offset="0%" stopColor="#3d06f8" />
-                        <stop offset="100%" stopColor="#7B56FB" />
+                        <stop offset="0%" stopColor="#0055FF" />
+                        <stop offset="100%" stopColor="#3385FF" />
                       </linearGradient>
                       <filter id="shadow">
                         <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.3"/>
@@ -159,8 +159,8 @@ const MainLayout = ({ lang, setLang }: { lang: Language, setLang: (l: Language) 
                  <svg width="28" height="28" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                    <defs>
                      <linearGradient id="footerLogoGradient" x1="0" y1="0" x2="44" y2="44">
-                       <stop offset="0%" stopColor="#3d06f8" />
-                       <stop offset="100%" stopColor="#7B56FB" />
+                       <stop offset="0%" stopColor="#0055FF" />
+                       <stop offset="100%" stopColor="#3385FF" />
                      </linearGradient>
                    </defs>
                    <rect x="2" y="2" width="40" height="40" rx="8" fill="url(#footerLogoGradient)"/>

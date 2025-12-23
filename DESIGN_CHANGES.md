@@ -12,13 +12,14 @@ The brand colors are defined in `index.html` in the Tailwind config section. To 
 2. Find the `tailwind.config` section (around line 12)
 3. Locate the `brand` color object in the `colors` section
 4. Update the color values (50-900 shades)
-5. The primary brand color is `brand-500` (#3d06f8 - blue)
-6. The secondary brand color is `brand-400` (#7B56FB - lighter blue)
+5. The primary brand color is `brand-500` (#0055FF - Amplitude blue)
+6. The secondary brand color is `brand-400` (#3385FF - lighter Amplitude blue)
 
-**Current Blue Scheme:**
-- Primary: `#3d06f8` (brand-500)
-- Secondary: `#7B56FB` (brand-400)
+**Current Amplitude Blue Scheme:**
+- Primary: `#0055FF` (brand-500) - Amplitude's signature blue
+- Secondary: `#3385FF` (brand-400) - lighter Amplitude blue
 - Shades: 50 (lightest) to 900 (darkest)
+- Accent: `#FF6600` (accent-500) - Amplitude orange accent
 
 **To switch to Orange Scheme:**
 Replace the brand colors with:
@@ -278,12 +279,13 @@ keido/
 ## Quick Reference
 
 ### Color Classes
-- `bg-brand-500`: Primary blue background
-- `text-brand-600`: Primary blue text
-- `border-brand-500`: Primary blue border
+- `bg-brand-500`: Primary Amplitude blue background (#0055FF)
+- `text-brand-600`: Primary Amplitude blue text (#0044CC)
+- `border-brand-500`: Primary Amplitude blue border (#0055FF)
+- `bg-accent-500`: Amplitude orange accent (#FF6600)
 
 ### Typography Classes
-- `font-display`: Cabinet Grotesk (headings)
+- `font-display`: Inter (headings)
 - `font-sans`: Inter (body text)
 - `font-bold`: Bold weight
 - `font-semibold`: Semi-bold weight
