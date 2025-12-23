@@ -29,7 +29,7 @@ export const WorkflowNode: React.FC<NodeProps> = ({ icon: Icon, title, subtitle,
   
   return (
     <div className={`
-      relative flex items-center gap-4 p-4 rounded-2xl border transition-all duration-300 select-none group z-10 w-max
+      relative flex items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl border transition-all duration-300 select-none group z-10 w-max max-w-[90vw] sm:max-w-none
       ${faded 
         ? 'bg-slate-50 border-slate-100 opacity-60 grayscale' 
         : 'bg-white border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-300 hover:-translate-y-1 hover:ring-4 hover:ring-brand-50/50'
@@ -37,17 +37,17 @@ export const WorkflowNode: React.FC<NodeProps> = ({ icon: Icon, title, subtitle,
       ${className}
     `}>
       <div className={`
-        w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300
+        w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300
         ${isTrigger 
           ? 'bg-slate-900 text-white shadow-lg shadow-slate-900/20 group-hover:bg-brand-600 group-hover:shadow-brand-500/30' 
           : 'bg-white border border-slate-100 text-slate-600 group-hover:border-brand-200 group-hover:text-brand-600'
         }
       `}>
-        <Icon size={24} strokeWidth={isTrigger ? 2 : 1.5} />
+        <Icon size={22} strokeWidth={isTrigger ? 2 : 1.5} />
       </div>
-      <div className="min-w-[140px]">
-        <div className={`text-sm font-bold transition-colors ${faded ? 'text-slate-400' : 'text-slate-900 group-hover:text-brand-900'}`}>{title}</div>
-        <div className="text-xs text-slate-500 font-medium mt-0.5">{subtitle}</div>
+      <div className="min-w-[100px] sm:min-w-[120px] md:min-w-[140px]">
+        <div className={`text-xs sm:text-sm font-bold transition-colors ${faded ? 'text-slate-400' : 'text-slate-900 group-hover:text-brand-900'}`}>{title}</div>
+        <div className="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">{subtitle}</div>
       </div>
       
       {/* Logic Output Badge */}
@@ -70,11 +70,11 @@ export const WorkflowNode: React.FC<NodeProps> = ({ icon: Icon, title, subtitle,
 
 export const WorkflowDiagram: React.FC<{ className?: string, animated?: boolean }> = ({ className = '', animated = false }) => {
   return (
-    <div className={`relative w-full max-w-[800px] h-[400px] md:h-[600px] mx-auto ${className}`}>
+    <div className={`relative w-full max-w-[800px] h-[400px] md:h-[500px] lg:h-[600px] mx-auto ${className}`}>
       <style>{flowAnimationStyles}</style>
       
-      {/* CONNECTOR LINES (SVG) */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" viewBox="0 0 800 600">
+      {/* CONNECTOR LINES (SVG) - ViewBox scales with container for responsiveness */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
         <defs>
            <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#cbd5e1" />
@@ -112,10 +112,10 @@ export const WorkflowDiagram: React.FC<{ className?: string, animated?: boolean 
         )}
       </svg>
 
-      {/* NODES - Absolute Positioning based on 800x600 Grid */}
+      {/* NODES - Centered and Responsive Positioning */}
       
-      {/* 1. Trigger (Center X=400, Top=40) */}
-      <div className="absolute top-[40px] left-[400px] -translate-x-1/2 z-10">
+      {/* 1. Trigger (Center, Top ~6.67%) */}
+      <div className="absolute top-[4%] sm:top-[6.67%] left-1/2 -translate-x-1/2 z-10">
         <WorkflowNode 
           icon={LayoutTemplate} 
           title="New Intercom message" 
@@ -124,19 +124,19 @@ export const WorkflowDiagram: React.FC<{ className?: string, animated?: boolean 
         />
       </div>
 
-      {/* 2. Logic (Center X=400, Top=200) */}
-      <div className="absolute top-[200px] left-[400px] -translate-x-1/2 z-10">
+      {/* 2. Logic (Center, Top ~33.33%) */}
+      <div className="absolute top-[28%] sm:top-[33.33%] left-1/2 -translate-x-1/2 z-10">
         <WorkflowNode 
           icon={Bot} 
           title="Check if existing contact?" 
           subtitle="branch-1" 
           type="logic"
-          className="pr-16" // Extra padding for the wide text
+          className="pr-4 sm:pr-8 md:pr-16" // Responsive padding
         />
       </div>
 
-      {/* 3. Action Left (X=200, Top=400) */}
-      <div className="absolute top-[400px] left-[200px] -translate-x-1/2 z-10">
+      {/* 3. Action Left (25%, Top ~66.67%) */}
+      <div className="absolute top-[58%] sm:top-[66.67%] left-[25%] -translate-x-1/2 z-10">
         <WorkflowNode 
           icon={MessageSquare} 
           title="Message sales" 
@@ -144,8 +144,8 @@ export const WorkflowDiagram: React.FC<{ className?: string, animated?: boolean 
         />
       </div>
 
-      {/* 4. Action Right (X=600, Top=400) */}
-      <div className="absolute top-[400px] left-[600px] -translate-x-1/2 z-10">
+      {/* 4. Action Right (75%, Top ~66.67%) */}
+      <div className="absolute top-[58%] sm:top-[66.67%] left-[75%] -translate-x-1/2 z-10">
         <WorkflowNode 
           icon={Database} 
           title="Create CRM record" 
@@ -153,8 +153,8 @@ export const WorkflowDiagram: React.FC<{ className?: string, animated?: boolean 
         />
       </div>
 
-      {/* 5. Action Bottom (X=200, Top=530) */}
-      <div className="absolute top-[530px] left-[200px] -translate-x-1/2 z-10">
+      {/* 5. Action Bottom (25%, Top ~88.33%) */}
+      <div className="absolute top-[82%] sm:top-[88.33%] left-[25%] -translate-x-1/2 z-10">
         <WorkflowNode 
           icon={PenTool} 
           title="Write an email" 
@@ -247,11 +247,11 @@ export const AppMockFrame: React.FC = () => {
 
 export const WorkflowFeatureView: React.FC = () => {
   return (
-    <div className="relative w-full h-[400px] md:h-[500px] bg-gradient-to-br from-brand-50/50 via-brand-50/30 to-white rounded-2xl md:rounded-3xl border border-brand-100/50 overflow-hidden shadow-2xl shadow-brand-500/10 group hover:shadow-brand-500/20 transition-all duration-500 flex items-center justify-center">
+    <div className="relative w-full h-[350px] sm:h-[400px] md:h-[500px] bg-gradient-to-br from-brand-50/50 via-brand-50/30 to-white rounded-2xl md:rounded-3xl border border-brand-100/50 overflow-hidden shadow-2xl shadow-brand-500/10 group hover:shadow-brand-500/20 transition-all duration-500 flex items-center justify-center">
        <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-60"></div>
        
-       {/* Animated Diagram */}
-       <div className="w-full max-w-[800px] h-[400px] md:h-[600px] scale-[0.7] md:scale-[0.85] lg:scale-[0.9] transform translate-y-4 md:translate-y-6 overflow-hidden">
+       {/* Animated Diagram - Responsive scaling, perfectly centered */}
+       <div className="w-full max-w-[800px] h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px] scale-[0.65] sm:scale-[0.7] md:scale-[0.85] lg:scale-[0.9] mx-auto overflow-hidden flex items-center justify-center">
           <WorkflowDiagram animated={true} />
        </div>
     </div>

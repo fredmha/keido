@@ -126,12 +126,12 @@ export const Landing: React.FC = () => {
       </section>
 
       {/* 2. ROI STATS SECTION */}
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+      <section className="py-0 pb-8 md:pb-12 bg-white relative overflow-hidden min-h-[320px] md:min-h-[360px] flex items-center">
+        <div className="container mx-auto p-0 max-w-7xl flex-1 flex items-center">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-10 w-full items-center h-[80vh] min-h-[320px] max-h-[520px]">
             
             {/* Left Card: Calendar Booking */}
-            <div className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 border border-slate-100 shadow-xl hover:shadow-2xl transition-shadow">
+            <div className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 border border-slate-100 shadow-xl hover:shadow-2xl transition-shadow flex flex-col justify-center h-full">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-slate-900 mb-3 md:mb-4">
                 Calendar Booking on Autopilot
               </h3>
