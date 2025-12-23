@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { AreaChart, Area, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { WorkflowFeatureView } from '../../components/Marketing/WorkflowComponents';
 import { HeroWorkflowAnimation } from '../../components/Marketing/HeroWorkflowAnimation';
+import { LogoCarousel } from '../../components/Marketing/LogoCarousel';
 
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const Landing: React.FC = () => {
         { label: "4x", desc: "Increase in outbound responses" },
         { label: "2", desc: "ROI-positive in just 2 weeks" }
       ],
-      image: "/images/Generated Image December 23, 2025 - 10_02AM.jpeg"
+      image: "/images/Generated Image December 23, 2025 - 1_58PM.jpeg"
     },
     {
       name: "Michael Rodriguez",
@@ -33,7 +34,7 @@ export const Landing: React.FC = () => {
         { label: "3x", desc: "Faster response time" },
         { label: "40%", desc: "Increase in qualified leads" }
       ],
-      image: "/images/Generated Image December 23, 2025 - 10_05AM.jpeg"
+      image: "/images/Generated Image December 23, 2025 - 2_03PM.jpeg"
     },
     {
       name: "Emma Chen",
@@ -43,7 +44,7 @@ export const Landing: React.FC = () => {
         { label: "15hrs", desc: "Saved per week per team member" },
         { label: "99.9%", desc: "Uptime guarantee" }
       ],
-      image: "/images/Generated Image December 23, 2025 - 10_07AM.jpeg"
+      image: "/images/Generated Image December 23, 2025 - 2_26PM.jpeg"
     }
   ];
 
@@ -112,15 +113,9 @@ export const Landing: React.FC = () => {
           </div>
         
           {/* LOGO STRIP */}
-          <div className="py-12 md:py-16 mt-8 md:mt-12 border-b border-slate-100 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-             <div className="text-center text-xs sm:text-sm font-semibold text-slate-400 mb-6 md:mb-8 uppercase tracking-widest px-4">Trusted by innovative teams</div>
-             <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12 md:gap-20 opacity-50 grayscale transition-all hover:grayscale-0 px-4">
-                 <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-slate-800"><HexagonIcon /> ACME Corp</div>
-                 <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-slate-800"><TriangleIcon /> Vercel</div>
-                 <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-slate-800"><CircleIcon /> Loom</div>
-                 <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-slate-800"><SquareIcon /> Raycast</div>
-                 <div className="flex items-center gap-2 font-bold text-lg sm:text-xl text-slate-800"><DiamondIcon /> Linear</div>
-             </div>
+          <div className="py-6 md:py-8 mt-4 md:mt-6 border-b border-slate-100 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+             <div className="text-center text-xs sm:text-sm font-semibold text-slate-400 mb-4 md:mb-5 uppercase tracking-widest px-4">Trusted by innovative teams</div>
+             <LogoCarousel />
           </div>
         </div>
       </section>
@@ -643,20 +638,3 @@ export const Landing: React.FC = () => {
     </div>
   );
 };
-
-// Generic Shape Icons for Placeholders
-const HexagonIcon = () => (
-   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l0 10l10 5l10 -5l0 -10z" /></svg>
-)
-const TriangleIcon = () => (
-   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2z" /></svg>
-)
-const CircleIcon = () => (
-   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" /></svg>
-)
-const SquareIcon = () => (
-   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" /></svg>
-)
-const DiamondIcon = () => (
-   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 12l10 10l10 -10z" /></svg>
-)

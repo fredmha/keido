@@ -53,6 +53,21 @@
         }
       }
     </script>
+    <script>
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "https://adora-cdn.com/adora-start.js";
+      script.onload = function () {
+        adoraStart({
+          orgId: "9ee267f0-5336-4c50-bacb-6e45001ef855",
+          uid: "", // Docs -> https://www.adora.so/docs/integration/cohorts#adding-user-ids
+          userCohorts: {
+            // "example-cohort": "example-value",
+          } // Docs -> https://www.adora.so/docs/integration/cohorts
+        })
+      }
+      document.head.appendChild(script);
+    </script>
     <style>
       body {
         font-family: 'Inter', sans-serif;
